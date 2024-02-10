@@ -1,0 +1,76 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="backimg mt-2" style="background-image: url('{% static 'images/background_hero_section.jpg' %}');">
+    <div class="box">
+        <form name="search" class="searchbar">
+            <input type="text" class="input" name="txt" placeholder="Search your favourite food">
+        </form>
+        <i class="fas fa-search searchicon"></i>
+    </div>
+</div>
+
+
+
+<!-- card section -->
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card h-100 shadow hovereffect">
+                <div class="username d-flex border-bottom">
+                    <img src="{% static 'images/keval3.jpg'%}" alt="" class="userphoto ms-2 my-1"
+                        style="height: 30px; width: 30px; border-radius: 50%;">
+                    <h6 class=" mt-2 ms-2">keval__paghadal</h6>
+                </div>
+                <img src="{% static 'images/cardphoto1.jpg' %}" class="" alt="cardphoto1">
+                <div class="card-body">
+                    <h6 class="card-title">pasta</h6>
+                    <h3 class="card-text">Baked ziti</h3>
+                </div>
+                <div class="card-body pt-0">
+                    <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow hovereffect">
+                <div class="username d-flex border-bottom">
+                    <img src="{% static 'images/keval3.jpg'%}" alt="" class="userphoto ms-2 my-1"
+                        style="height: 30px; width: 30px; border-radius: 50%;">
+                    <h6 class=" mt-2 ms-2">keval__paghadal</h6>
+                </div>
+                <img src="{% static 'images/cardphoto5.jpg' %}" class="" alt="cardphoto1">
+                <div class="card-body">
+                    <h6 class="card-title">pasta</h6>
+                    <h3 class="card-text">Baked ziti</h3>
+                </div>
+                <div class="card-body pt-0">
+                    <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card h-100 shadow hovereffect">
+                <div class="username d-flex border-bottom">
+                    <img src="{% static 'images/keval3.jpg'%}" alt="" class="userphoto ms-2 my-1"
+                        style="height: 30px; width: 30px; border-radius: 50%;">
+                    <h6 class=" mt-2 ms-2">keval__paghadal</h6>
+                </div>
+                <img src="{% static 'images/cardphoto6.jpg' %}" class="" alt="cardphoto1">
+                <div class="card-body">
+                    <h6 class="card-title">pasta</h6>
+                    <h3 class="card-text">Baked ziti</h3>
+                </div>
+                <div class="card-body pt-0">
+                    <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
