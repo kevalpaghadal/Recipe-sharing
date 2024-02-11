@@ -1,0 +1,104 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<section class="overflow-hidden" style="background-image: url({% static 'images/contact_background.jpg' %});">
+
+    <!-- main section -->
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+        <div class="row gx-lg-5 align-items-center  justify-content-center">
+
+
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="width: 32rem; margin-left: 60px;">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card"
+                    style="background-color: #413d3d33; backdrop-filter: blur(2px); border: 1px solid  hsl(218, 81%, 95%); width: 50rem;">
+
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <div class="text-white">
+                            <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
+                            <!--Section description-->
+                            <p class="text-center w-responsive mx-auto mb-5">Do you have any questions? Please do
+                                not hesitate to
+                                contact us directly. Our team will come back to you within
+                                a matter of hours to help you.</p>
+                        </div>
+                        <form>
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <!-- <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="form3Example1" class="form-control" />
+                                        <label class="form-label text-white" for="form3Example1">First name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="form3Example2" class="form-control" />
+                                        <label class="form-label text-white" for="form3Example2">Last name</label>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example3" class="form-control" />
+                                <label class="form-label text-white" for="form3Example3">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <textarea type="textbox" id="form3Example4" class="form-control"></textarea>
+                                <label class="form-label text-white" for="form3Example4">Your Message</label>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <!-- <div class="form-check d-flex justify-content-center mb-4">
+          <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+          <label class="form-check-label text-white" for="form2Example33">
+            Subscribe to our newsletter
+          </label>
+        </div> -->
+
+                            <!-- Submit button -->
+                            <div class="text-center text-md-left">
+                                <a class="btn btn-primary px-4" onclick="document.getElementById('contact-form').submit();">Send</a>
+                            </div>
+                            <div class="status"></div>
+
+                            <!-- <div class="text-center dont-have text-white">Already have an account? <a
+                                    href="/login.html" style="color: hsl(218, 81%, 75%)">Login</a></div>
+                            <hr style="color:white;"> -->
+
+                            <!-- Register buttons -->
+                            <!-- <div class="text-center text-white">
+                                <p>or sign up with:</p>
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-google"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

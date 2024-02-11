@@ -1,0 +1,119 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid addrecipeback shadow" style="background-image: url({% static 'images/addrecipeback.jpg' %});">
+    <div class="container py-5">
+      <div class="card mx-auto rounded-0 bg-light" style="width: 35rem;">
+        <div class="card-body bg-light">
+          <h2 class="my-2"><i class="fa-solid fa-plus"></i> Add a Recipe</h2>
+          <p class="mb-4" style="font-size: 14px;">Uploading personal recipes is easy! Add yours to your favorites,
+            share with friends, family, or the
+            Allrecipes
+            community</p>
+          <hr>
+          <form action="" >
+            <div class="row">
+
+              <!-- recipe titel and description -->
+              <div class="col-md-6">
+
+                <div class="row">
+                  <!-- recipe titel -->
+                  <div class="col-md-12">
+                    <label class="form-label mb-0" for="form3Example3">Recipe Title</label>
+                    <input type="email" id="form3Example3" class="form-control mb-4 rounded-0 border border-dark"/>
+                  </div>
+
+                  <!-- description -->
+                  <div class="col-md-12">
+                    <label class="form-label mb-0" for="form3Example3">Description</label>
+                    <textarea type="email" id="form3Example3" rows="6"
+                      class="form-control rounded-0 border border-dark"></textarea>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- photo -->
+              <div class="col-md-6">
+                <label class="form-label mb-0" for="form3Example3">Photo</label>
+                <!-- <input type="file" id="form3Example3" src="/image/keval2.jpg" accept="image/*" class="form-control rounded-0 border border-dark p-0"
+                  style="height: 245px;" /> -->
+                  <input aria-labelledby="photoUploadFileAdd photoUploadFileMain" aria-describedby="uploadSectionDescription" type="file" id="photoUploadFile" class="formLayoutPhotoUpload__uploadInput js--fileInput" accept="image/*">
+                  <!-- <input type="image" src="" alt="Submit" style="height: 245px;"> -->
+              </div>
+            </div>
+            <hr>
+
+            <!-- ingredients sections -->
+            <h6 class="fw-bold">Ingredients</h6>
+            <p class="" style="color: rgba(0,0,0,.65); font-size: 14px;">
+              Enter one ingredient per line. Include the quantity (i.e. cups, tablespoons) and any special preparation
+              (i.e. sifted, softened, chopped). Use optional headers to organize the different parts of the recipe (i.e.
+              Cake, Frosting, Dressing).</p>
+            <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter ingredients below </p>
+
+            <div class="row">
+              <div class="col-md-11 col-11 mb-3">
+                <input type="email" id="form3Example3" class="form-control rounded-0 border border-dark" />
+              </div>
+              <div class="col-md-1 col-1 p-0">
+                <i class="fa-regular fa-circle-xmark"></i>
+              </div>
+            </div>
+
+            <div class="">
+              <button type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i class="fa-solid fa-plus"></i>
+                ADD
+                INGREDIANTS</button>
+            </div>
+
+            <!-- end ingretiant section -->
+
+            <hr>
+
+
+            <!-- direction section -->
+            <h6 class="fw-bold">Directions</h6>
+            <p style="color: rgba(0,0,0,.65); font-size: 14px;">Explain how to make your recipe, including oven
+              temperatures, baking or
+              cooking times, and pan sizes, etc.
+              Use optional headers to organize the different parts of the recipe (i.e. Prep, Bake, Decorate).</p>
+            <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter directions below </p>
+
+            <div class="row">
+              <div class="col-md-11 col-11 mb-3">
+                <textarea type="email" id="form3Example3" class="form-control rounded-0 border border-dark"></textarea>
+              </div>
+              <div class="col-md-1 col-1 p-0">
+                <i class="fa-regular fa-circle-xmark"></i>
+              </div>
+            </div>
+            
+
+            <div class="">
+              <button type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i class="fa-solid fa-plus"></i>
+                ADD
+                STEP</button>
+            </div>
+
+            <!-- end ingrediant section -->
+            <hr>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class=" btn text-danger rounded-0 fw-bold">CANCEL</button>
+
+              <button type="submit" class="btn btn-danger rounded-0 fw-bold">
+                Submit Recipe</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

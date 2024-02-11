@@ -1,0 +1,90 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<section class="background-radial-gradient overflow-hidden" style="background: url('{% static 'images/log_reg_background.jpg' %}');">
+
+    <!-- main section -->
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 pb-4">
+        <div class="row gx-lg-5 align-items-center mb-5">
+            <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%); font-size: 4rem;">
+                    The Best Recipe <br />
+                    <span style="color: hsl(218, 81%, 75%)">For You</span>
+                </h1>
+                <!-- <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                    dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                    ab ipsum nisi dolorem modi. Quos?
+                </p> -->
+            </div>
+
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="width: 30rem; margin-left: 60px;">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card"
+                    style="background-color: #413d3d33; backdrop-filter: blur(6px); border: 1px solid  hsl(218, 81%, 95%);">
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <form>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example3" class="form-control"/>
+                                <label class="form-label text-white" for="form3Example3">Email address</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form3Example4" class="form-control" />
+                                <label class="form-label text-white" for="form3Example4">Password</label>
+                            </div>
+
+                            <!-- Checkbox -->
+                            <!-- <div class="form-check d-flex justify-content-center mb-4">
+              <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+              <label class="form-check-label text-white" for="form2Example33">
+                Subscribe to our newsletter
+              </label>
+            </div> -->
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-3 text-white px-4">
+                                Login
+                            </button>
+
+                            <div class="text-center dont-have text-white">Don't have an account? <a
+                                    href="{% url 'registerUser' %}" style="color: hsl(218, 81%, 75%)">Register</a></div>
+                            <hr style="color:white;">
+
+                            <!-- Register buttons -->
+                            <div class="text-center text-white">
+                                <p>or sign up with:</p>
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-facebook-f"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-google"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-twitter"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

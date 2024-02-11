@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mx-5 mb-md-5 d-flex">
+        <div class="col-3 d-flex justify-content-end">
+            <img src="{% static 'images/profile_avatar.png' %}" class="mt-5 shadow" alt="profile photo"
+                style="border-radius: 50%; object-fit: cover; height: 130px; width: 130px;">
+        </div>
+        <div class="col-2 mt-4">
+            <h4 class="username mt-5">Unknown_User</h4>
+            <h6 class="countpost">7 post</h6>
+            <h6 class="bio">I Love Food 🤤</h6>
+        </div>
+        <div class="col-sm-2 mt-md-4">
+            <a href="#"><button type="button" class="btn btn-outline-primary mt-5 btn-sm px-4 px-md-2">edit
+                    profile</button></a>
+        </div>
+    </div>
+    <hr>
+    <div class="row row-cols-3 g-0 g-md-2 mt-4">
+        <div class="col">
+            <div class="card shadow ">
+                <img src="{% static 'images/cardphoto1.jpg' %}" class="" alt="cardphoto1">
+            </div>
+        </div>
+        <div class="col">
+            <div class=" card shadow">
+                <img src="{% static 'images/cardphoto2.jpg' %}" class="" alt="cardphoto2">
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow">
+                <img src="{% static 'images/cardphoto3.jpg' %}" class="" alt="cardphoto3">
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow ">
+                <img src="{% static 'images/cardphoto4.jpg' %}" class="" alt="cardphoto1">
+            </div>
+        </div>
+        <div class="col">
+            <div class=" card shadow">
+                <img src="{% static 'images/cardphoto5.jpg' %}" class="" alt="cardphoto2">
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow">
+                <img src="{% static 'images/cardphoto6.jpg' %}" class="" alt="cardphoto3">
+            </div>
+        </div>
+        <div class="col">
+            <div class="card shadow">
+                <img src="{% static 'images/cardphoto7.jpg' %}" class="" alt="cardphoto3">
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

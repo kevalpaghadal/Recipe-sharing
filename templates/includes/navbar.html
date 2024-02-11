@@ -1,4 +1,4 @@
-<div class="container-fluid nav-shadow bg-white">
+<div class="container-fluid nav-shadow bg-white" id="meals">
     <div class="container">
         <nav class="navbar navbar-expand-md d-flex">
             <div class="container mt-2">
@@ -21,7 +21,7 @@
                     <div class="offcanvas-body justify-content-end align-items-center">
                         <ul class="navbar-nav justify-content-center align-items-center fs-6">
                             <li class="nav-item ">
-                                <a class="nav-link text-dark" href="/home.html" style="padding-right: 15px;">Home</a>
+                                <a class="nav-link text-dark" href="{% url 'home'%}" style="padding-right: 15px;">Home</a>
                             </li>
 
                             <li class="nav-item left_side_border" style="padding: 8px;">
@@ -36,7 +36,7 @@
                             </li>
 
                             <li class="nav-item left_side_border">
-                                <a class="nav-link text-dark" href="/contact_us.html">Contact Us</a>
+                                <a class="nav-link text-dark" href="{% url 'contact_us'%}">Contact Us</a>
                             </li>
 
                             <li class="nav-item left_side_border">
@@ -61,17 +61,17 @@
                         </ul>
                         <div class="login-option d-flex ms-5">
                             <a class="cs-color cs-popup-joinus-btn login-popup text-dark nav-link"
-                                href="#user-register"> <strong> Login /</strong> </a>
-                            <span><a href=""
+                                href="{% url 'loginUser'%}"> <strong> Login /</strong> </a>
+                            <span><a href="{% url 'registerUser' %}"
                                     class="cs-color cs-popup-joinus-btn login-popup text-dark nav-link"><strong>Register</strong></a></span>
                         </div>
 
                         <div class="dropdown">
                             <div class="dropbtn"><i class="fa-solid fa-user user_icon ms-3"></i></div>
                             <div class="dropdown-content">
-                                <a href="#">My profile</a>
-                                <a href="#">Add recipe</a>
-                                <a href="#">Logout</a>
+                                <a href="{% url 'userProfile' %}">My profile</a>
+                                <a href="{% url 'addRecipe' %}">Add recipe</a>
+                                <a href="#" class="text-danger fw-bold">Logout</a>
                             </div>
                         </div>
                     </div>
