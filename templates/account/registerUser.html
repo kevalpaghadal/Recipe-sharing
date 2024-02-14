@@ -4,7 +4,8 @@
 
 {% block content %}
 
-<section class="background-radial-gradient overflow-hidden" style="background: url('{% static 'images/log_reg_background.jpg' %}');">
+<section class="background-radial-gradient overflow-hidden " style="background: url('{% static 'images/log_reg_background.jpg' %}')">
+
 
     <!-- main section -->
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 pb-2">
@@ -22,41 +23,61 @@
                 </p> -->
             </div>
 
-            <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="width: 32rem; margin-left: 60px;">
+            <div class="col-lg-6 mb-5 mb-lg-0 position-relative" style="width: 36rem; margin-left: 45px;">
                 <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
                 <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
                 <div class="card"
                     style="background-color: #413d3d33; backdrop-filter: blur(6px); border: 1px solid  hsl(218, 81%, 95%);">
                     <div class="card-body px-4 py-5 px-md-5">
-                        <form>
+                        <form action="{% url 'registerUser'%}" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <!-- <h2 class="text-center text-white mb-4 link-underline">Register</h2> -->
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="text" id="form3Example1" class="form-control" />
+                                        {{form.first_name}}
                                         <label class="form-label text-white" for="form3Example1">First name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-outline">
-                                        <input type="text" id="form3Example2" class="form-control" />
+                                        {{form.last_name}}
                                         <label class="form-label text-white" for="form3Example2">Last name</label>
                                     </div>
                                 </div>
                             </div>
 
+                            <!-- username input -->
+                            <div class="form-outline mb-4">
+                                {{form.username}}
+                                <label class="form-label text-white" for="form3Example3">Username</label>
+                            </div>
+
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control" />
+                                {{form.email}}
                                 <label class="form-label text-white" for="form3Example3">Email address</label>
                             </div>
 
                             <!-- Password input -->
-                            <div class="form-outline mb-4">
-                                <input type="password" id="form3Example4" class="form-control" />
-                                <label class="form-label text-white" for="form3Example4">Password</label>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        {{form.password}}
+                                        <label class="form-label text-white" for="form3Example1">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        {{form.confirm_password}}
+                                        <label class="form-label text-white" for="form3Example2">Confirm Password</label>
+                                    </div>
+                                </div>
                             </div>
+
+                           
 
                             <!-- Checkbox -->
                             <!-- <div class="form-check d-flex justify-content-center mb-4">
@@ -65,10 +86,21 @@
                 Subscribe to our newsletter
               </label>
             </div> -->
+            <ul class="errorlist nonfield" style="color: white; background: red; font-weight: bold; font-size: medium;">
+                {% for field in form %}
+                {% if form.errors %}
+                {% for errror in field.errors %}
+                <li style="list-style: none;">{{errror}}</li>
+                {% endfor %}
+                {% endif %}
+    
+                {% endfor %}
+                <li style="list-style: none;">{{form.non_field_errors}}</li>
+            </ul>
 
                             <!-- Submit button -->
                             <button type="submit" class="btn btn-primary btn-block mb-3 text-white px-4">
-                                Sign up
+                                Submit
                             </button>
 
                             <div class="text-center dont-have text-white">Already have an account? <a
