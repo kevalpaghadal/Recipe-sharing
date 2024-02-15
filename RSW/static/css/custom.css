@@ -1,0 +1,14 @@
+@keyframes show-notification{
+    0% {top: -100%;}
+    20% {top: 100px;}
+    80% {top: 100px;}
+    100% {top: -100%;}
+}
+
+.notification{
+    position: fixed;
+    /* bottom: 100%; */
+    right: 20px;
+    animation-name: show-notification;
+    animation-duration: 7s;
+}

@@ -60,21 +60,26 @@
                                 </ul>
                             </li> -->
                         </ul>
+                        
+                        
+
+                        {% if user.is_authenticated %}
+                        <div class="dropdown">
+                            <div class="dropbtn"><i class="fa-solid fa-user user_icon ms-3"></i></div>
+                            <div class="dropdown-content">
+                                <a href="{% url 'userProfile' %}">My profile</a>
+                                <a href="{% url 'addRecipe' %}">Add recipe</a>
+                                <a href="{% url 'logoutUser'%}" class="text-danger fw-bold">Logout</a>
+                            </div>
+                        </div>
+                        {% else %}
                         <div class="login-option d-flex ms-5">
                             <a class="cs-color cs-popup-joinus-btn login-popup text-dark nav-link"
                                 href="{% url 'loginUser'%}"> <strong> Login /</strong> </a>
                             <span><a href="{% url 'registerUser' %}"
                                     class="cs-color cs-popup-joinus-btn login-popup text-dark nav-link"><strong>Register</strong></a></span>
                         </div>
-
-                        <div class="dropdown">
-                            <div class="dropbtn"><i class="fa-solid fa-user user_icon ms-3"></i></div>
-                            <div class="dropdown-content">
-                                <a href="{% url 'userProfile' %}">My profile</a>
-                                <a href="{% url 'addRecipe' %}">Add recipe</a>
-                                <a href="#" class="text-danger fw-bold">Logout</a>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
 
 
