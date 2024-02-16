@@ -9,8 +9,8 @@
 
 
     <!-- main section -->
-    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5 pb-2">
-        <div class="row gx-lg-5 align-items-center mb-5">
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start ">
+        <div class="row gx-lg-5 align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                 <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%); font-size: 4rem;">
                     The Best Recipe <br />
@@ -29,7 +29,7 @@
                 <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
                 <div class="card"
-                    style="background-color: #413d3d33; backdrop-filter: blur(6px); border: 1px solid  hsl(218, 81%, 95%);">
+                    style="background-color: #413d3d33; backdrop-filter: blur(3px); border: 1px solid  hsl(218, 81%, 95%);">
                     <div class="card-body px-4 py-5 px-md-5">
 
                         <form action="{% url 'registerUser'%}" method="POST" enctype="multipart/form-data">
@@ -109,11 +109,11 @@
                             </button>
 
                             <div class="text-center dont-have text-white">Already have an account? <a
-                                    href="{% url 'loginUser' %}" style="color: hsl(218, 81%, 75%)">Login</a></div>
-                            <hr style="color:white;">
+                                    href="{% url 'loginUser' %}" style="color: hsl(0, 0%, 98%)">Login</a></div>
+                            <hr style="color:white;" >
 
                             <!-- Register buttons -->
-                            <div class="text-center text-white">
+                            <!-- <div class="text-center text-white">
                                 <p>or sign up with:</p>
                                 <button type="button" class="btn btn-link btn-floating mx-1">
                                     <i class="fab fa-facebook-f"></i>
@@ -130,7 +130,7 @@
                                 <button type="button" class="btn btn-link btn-floating mx-1">
                                     <i class="fab fa-github"></i>
                                 </button>
-                            </div>
+                            </div> -->
 
                            
                         </form>
