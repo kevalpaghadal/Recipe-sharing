@@ -4,10 +4,10 @@
 
 {% block content %}
 
-<div class="container-fluid addrecipeback shadow" style="background-image: url({% static 'images/addrecipeback.jpg' %});">
+<div class="container-fluid">
     <div class="container py-5">
       <div class="card mx-auto rounded-0 bg-light" style="width: 35rem;">
-        <div class="card-body bg-light">
+        <div class="card-body bg-light" style="border: 1px solid #89878883;">
           <h2 class="my-2"><i class="fa-solid fa-plus"></i> Add a Recipe</h2>
           <p class="mb-4" style="font-size: 14px;">Uploading personal recipes is easy! Add yours to your favorites,
             share with friends, family, or the
@@ -38,12 +38,12 @@
               </div>
 
               <!-- photo -->
-              <div class="col-md-6">
+              <div class="col-md-6 ">
                 <label class="form-label mb-0" for="form3Example3">Photo</label>
-                <!-- <input type="file" id="form3Example3" src="/image/keval2.jpg" accept="image/*" class="form-control rounded-0 border border-dark p-0"
-                  style="height: 245px;" /> -->
-                  <input aria-labelledby="photoUploadFileAdd photoUploadFileMain" aria-describedby="uploadSectionDescription" type="file" id="photoUploadFile" class="formLayoutPhotoUpload__uploadInput js--fileInput" accept="image/*">
-                  <!-- <input type="image" src="" alt="Submit" style="height: 245px;"> -->
+
+                  <div class="imginputbox1">
+                    <input multiple type="file" id="photoUploadFile" accept="image/*" class="imginputbox">
+                  </div>
               </div>
             </div>
             <hr>
@@ -56,17 +56,28 @@
               Cake, Frosting, Dressing).</p>
             <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter ingredients below </p>
 
-            <div class="row">
+            <!-- <div class="row">
               <div class="col-md-11 col-11 mb-3">
                 <input type="email" id="form3Example3" class="form-control rounded-0 border border-dark" />
               </div>
               <div class="col-md-1 col-1 p-0">
-                <i class="fa-regular fa-circle-xmark"></i>
+                <a href=""><i class="fa-solid fa-xmark"></i></a>
               </div>
+            </div> -->
+
+            <div class="inputfield" id="row">
+              <input type="email" id="form3Example3" class="form-control rounded-0 border border-dark input_field" placeholder="Add Ingrediants" />
+              <a href=""  id="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a>
             </div>
 
+            <div class="inputfield" id="row">
+              <input type="email" id="form3Example3" class="form-control rounded-0 border border-dark input_field" placeholder="Add Ingrediants" />
+              <a href=""  id="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a>
+            </div>
+
+            <div id="newinput"></div>
             <div class="">
-              <button type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i class="fa-solid fa-plus"></i>
+              <button id="rowAdder" type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i class="fa-solid fa-plus"></i>
                 ADD
                 INGREDIANTS</button>
             </div>
@@ -84,18 +95,19 @@
               Use optional headers to organize the different parts of the recipe (i.e. Prep, Bake, Decorate).</p>
             <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter directions below </p>
 
-            <div class="row">
-              <div class="col-md-11 col-11 mb-3">
-                <textarea type="email" id="form3Example3" class="form-control rounded-0 border border-dark"></textarea>
-              </div>
-              <div class="col-md-1 col-1 p-0">
-                <i class="fa-regular fa-circle-xmark"></i>
-              </div>
+            <div class="inputfield" id="row">
+              <textarea type="email" id="form3Example3" class="form-control rounded-0 border border-dark input_field" placeholder="Add Step"></textarea>
+              <a href=""  id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
+            </div>
+
+            <div class="inputfield" id="row">
+              <textarea type="email" id="form3Example3" class="form-control rounded-0 border border-dark input_field" placeholder="Add Step"></textarea>
+              <a href=""  id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
             </div>
             
-
+          <div id="newinputstep"></div>
             <div class="">
-              <button type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i class="fa-solid fa-plus"></i>
+              <button id="textareaAdder" type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i class="fa-solid fa-plus"></i>
                 ADD
                 STEP</button>
             </div>

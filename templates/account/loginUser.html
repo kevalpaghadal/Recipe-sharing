@@ -7,8 +7,8 @@
 <section class="background-radial-gradient overflow-hidden" style="background: url('{% static 'images/log_reg_background.jpg' %}');">
 
     <!-- main section -->
-    <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-3 pb-2">
-        <div class="row gx-lg-5 align-items-center" style="margin-top: 10px; margin-bottom: 50px;">
+    <div class="container px-4 py-5 px-md-5 text-center text-lg-start">
+        <div class="row gx-lg-5 align-items-center" style="margin-top: 30px; margin-bottom: 50px;">
             <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                 <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%); font-size: 4rem;">
                     The Best Recipe <br />
@@ -90,12 +90,14 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <!-- load alerts message -->
-            {% include 'includes/alerts.html'%}
-        </div>
-    </div>
+   
 </section>
+
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- load alerts message -->
+        {% include 'includes/alerts.html'%}
+    </div>
+</div>
 
 {% endblock %}
