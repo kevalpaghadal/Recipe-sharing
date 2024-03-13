@@ -1,5 +1,5 @@
 {% load static %}
-<div class="container-fluid nav-shadow bg-white" id="meals" style="border-bottom: 1px solid rgba(91, 91, 91, 0.395);">
+<div class="container-fluid transparent" id="meals" style="border-bottom: 1px solid rgba(91, 91, 91, 0.395);">
     <div class="container">
         <nav class="navbar navbar-expand-md d-flex">
             <div class="container mt-2">
@@ -41,7 +41,7 @@
                             </li>
 
                             <li class="nav-item left_side_border">
-                                <a class="nav-link text-dark" href="/about_us.html">About Us</a>
+                                <a class="nav-link text-dark" href="{% url 'about_us'%}">About Us</a>
                             </li>
 
 
@@ -65,9 +65,13 @@
 
                         {% if user.is_authenticated %}
                         <div class="dropdown">
-                            <div class="dropbtn"><i class="fa-solid fa-user user_icon ms-3"></i></div>
+                            <div class="dropbtn"><i class="fa-solid fa-user user_icon ms-3" style="color: #febf57;"></i></div>
+                            
+                            
+                            
                             <div class="dropdown-content">
                                 <a href="{% url 'userProfile' %}">My profile</a>
+                                <a href="{% url 'yourRecipe' %}">Your recipe</a>
                                 <a href="{% url 'addRecipe' %}">Add recipe</a>
                                 <a href="{% url 'logoutUser'%}" class="text-danger fw-bold">Logout</a>
                             </div>

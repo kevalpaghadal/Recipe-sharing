@@ -88,11 +88,43 @@ def logoutUser(request):
 
 @login_required(login_url = 'loginUser')
 def userProfile(request):
-    return render(request , 'account/userProfile.html')
+    user = User.objects.get(pk = request.user.pk)
+    return render(request , 'account/userProfile.html',{'user' : user})
 
 @login_required(login_url = 'loginUser')
 def addRecipe(request):
+    ingrediants = []
+    steps = []
+    if request.method == 'POST':
+        titel = request.POST['titel']
+        description = request.POST['description']
+        # photo = request.POST['photo']
+        ingrediant_ct = request.POST['js_inputCounter']
+        for i in range(1 , int(ingrediant_ct)):
+            ingrediants.append(request.POST['ingre-'+str(i)])
+            # print(request.POST['ingre-'+str(i)])
+
+        print(ingrediants)
+
+
+        # ste_ct = request.POST['js_inputCounter']
+        # for i in range(1 , int(ste_ct)):
+        #     steps.append(request.POST['ste-'+str(i)])
+
+        # print(steps)
+
+        prep_time = request.POST['prep_time']
+        prep_time_unit = request.POST['prep_time_unit']
+
+        return redirect('addRecipe')
+    
+
     return render(request , 'account/addRecipe.html')
+
+
+def yourRecipe(requset):
+    return render(requset , 'account/yourRecipe.html')
+
 
 
 def forgot_password(request):
@@ -150,3 +182,5 @@ def reset_password(request):
             messages.error(request , 'password does not match!')
             return redirect('reset_password')
     return render(request , 'account/reset_password.html')
+
+    

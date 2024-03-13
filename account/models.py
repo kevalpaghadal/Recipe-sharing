@@ -80,3 +80,20 @@ class User(AbstractBaseUser):
     
     def has_module_perms(self , app_label):
         return True
+    
+
+    
+class AddRecipe(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    photo = models.ImageField(upload_to='recipe_photos/', blank=True , null= True)
+    ingredients = models.TextField()
+    steps = models.TextField(blank=True , null=True)
+    prep_time = models.PositiveIntegerField(default=0 , blank=True , null=True) # in minutes
+    prep_time_unit = models.CharField(blank=True , null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title

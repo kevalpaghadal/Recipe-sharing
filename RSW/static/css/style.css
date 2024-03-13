@@ -1,4 +1,7 @@
 /* navbar page */
+.transparent{
+  background-color: transparent;
+}
 
 /* dropdowns */
 .dropbtn {
@@ -34,7 +37,7 @@
 /* user_icon */
 .user_icon{
     font-size: 16px;
-    border: 2px solid black;
+    border: 2px solid #febf57;
     border-radius: 50%;
     padding: 5px;
 }
@@ -54,6 +57,22 @@
   background-position: center;
   background-size: cover;
   position: relative;
+  animation: zoom 20s infinite;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+@keyframes zoom {
+  0% {
+    background-size: 100%;
+
+  }
+  50% {
+    background-size: 120%;
+  }
+  100% {
+    background-size: 100%;
+  }
 }
 
 .backimg::before{
@@ -62,7 +81,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.311)
+  background: rgba(0, 0, 0, 0.444)
 }
 
 
@@ -73,7 +92,7 @@
 
 .box{
   position: absolute;
-  top: 47%;
+  top: 41%;
   left: 33%;
 }
 
@@ -91,13 +110,26 @@
 
 .searchicon{
   position: absolute;
-  bottom: 33%;
-  right: 3%;
+  bottom: 16%;
+  right: 7%;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 17px;
 }
 
+
+.zoom-img {
+  overflow: hidden;
+}
+
+.zoom-img  img {
+  width: 100%;
+  transition: all .4s ease-in-out;
+}
+
+.zoom-img img:hover{
+  transform: scale(1.2);
+}
 /* ------------------------------------------------------------- */
 /* footer */
 
@@ -122,7 +154,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.325)
+  background: rgba(0, 0, 0, 0.175)
 }
 
 
@@ -234,4 +266,97 @@ font-size: 25px;
   background: url('../images/recipe-add-photo.png_433-hash');
   background-position: right;
   background-size: cover;
+}
+
+/* ------------------------------------------------------ */
+/* profile setting */
+.container1{
+  margin: 83px auto;
+}
+
+.row1 {
+  margin: auto 100px;
+}
+
+.col-4 {
+  padding: 20px 10px;
+  max-height: 300px;
+  box-shadow: 0px 0px 2px black;
+  background-color: white;
+}
+
+.col-1{
+  width: 10px;
+}
+.col-7 {
+  width: 706px;
+  box-shadow: 0px 0px 2px black;
+  background-color: white;
+}
+
+.sidelink{
+  margin-top: 20px;
+}
+
+.link {
+  text-decoration: none;
+  list-style: none;
+  color: black;
+  padding: 10px 0px;
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
+
+.link:hover {
+  color: rgb(255, 162, 0);
+  background-color: rgba(211, 211, 211, 0.136);
+}
+
+.link:focus {
+  color: #d54215;
+  padding-left: 3px;
+  border-left: 8px solid #d54215;
+ 
+}
+
+.col-6 {
+  padding: 20px 20px;
+}
+
+.addImage__button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  height: 260px;
+  width: 230px;
+  background-color: rgba(0, 0, 0, .05);
+  cursor: pointer;
+}
+
+.addImage__buttonIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 60px;
+  background-color: #fff;
+  height: 120px;
+  width: 120px;
+  border: 3px #d54215 solid
+}
+
+.input_fields {
+  margin-top: 5px;
+  height: 35px;
+  width: 100%;
+  outline: none;
+}
+
+.linkhover{
+  color: #d54215;
+}
+
+.linkhover:hover{
+  color: white;
 }
