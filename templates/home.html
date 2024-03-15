@@ -19,6 +19,7 @@
 <!-- card section -->
 <div class="container mt-4">
     <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for recipe_data in data %}
         <div class="col">
             <div class="card h-100">
                 <div class="username d-flex border-bottom">
@@ -27,55 +28,18 @@
                     <h6 class=" mt-2 ms-2">keval__paghadal</h6>
                 </div>
                 <div class="zoom-img">
-                    <img src="{% static 'images/cardphoto1.jpg' %}" class="" alt="cardphoto1">
+                    <a href="{% url 'homePageRecipe' recipe_data.pk %}"><img src="{{recipe_data.photo.url}}" class="" alt="cardphoto1" style="height: 320px;"></a>
                 </div>
                 <div class="card-body">
-                    <h6 class="card-title">pasta</h6>
-                    <h3 class="card-text">Baked ziti</h3>
+                    <a href="{% url 'homePageRecipe' recipe_data.pk %}" class="nav-link"><h3 class="card-text">{{recipe_data.title}}</h3></a>
                 </div>
                 <div class="card-body pt-0">
                     <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
                 </div>
+                
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <div class="username d-flex border-bottom">
-                    <img src="{% static 'images/keval3.jpg'%}" alt="" class="userphoto ms-2 my-1"
-                        style="height: 30px; width: 30px; border-radius: 50%;">
-                    <h6 class=" mt-2 ms-2">keval__paghadal</h6>
-                </div>
-                <div class="zoom-img">
-                    <img src="{% static 'images/cardphoto5.jpg' %}" class="" alt="cardphoto1">
-                </div>
-                <div class="card-body">
-                    <h6 class="card-title">pasta</h6>
-                    <h3 class="card-text">Baked ziti</h3>
-                </div>
-                <div class="card-body pt-0">
-                    <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <div class="username d-flex border-bottom">
-                    <img src="{% static 'images/keval3.jpg'%}" alt="" class="userphoto ms-2 my-1"
-                        style="height: 30px; width: 30px; border-radius: 50%;">
-                    <h6 class=" mt-2 ms-2">keval__paghadal</h6>
-                </div>
-                <div class="zoom-img">
-                    <img src="{% static 'images/cardphoto6.jpg' %}" class="" alt="cardphoto1">
-                </div>
-                <div class="card-body">
-                    <h6 class="card-title">pasta</h6>
-                    <h3 class="card-text">Baked ziti</h3>
-                </div>
-                <div class="card-body pt-0">
-                    <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 </div>
 <div class="row">

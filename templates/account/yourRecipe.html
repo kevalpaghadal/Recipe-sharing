@@ -5,129 +5,28 @@
 {% block content %}
 
 <div class="container-fluid d-flex justify-content-center gap-3 flex-wrap mt-5">
-    <div class="card" style="max-width: 650px; height: 220px;">
+    {% for recipe_data in data %}
+    <div class="card" style="max-width: 730px; height: 300px;">
         <div class="row g-0">
             <div class="col-md-4">
-                <a href="{% url 'reset_password' %}" class="nav-link"><img src="{% static 'images/cardphoto2.jpg'%}"
-                        style="width: 300px; height: 220px; background-size: cover;" class="img-fluid"
+                <a href="{% url 'recipePage' recipe_data.pk %}" class="nav-link"><img src="{{recipe_data.photo.url}}"
+                        style="width: 280px; height: 300px;"
                         alt="Recipe Photo"></a>
             </div>
             <div class="col-md-8">
-                <div class="card-body">
-                    <a href="{% url 'reset_password' %}" class="nav-link">
-                        <h5 class="card-title"><u>Card title</u></h5>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="card" style="max-width: 650px; height: 220px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href="{% url 'reset_password' %}" class="nav-link"><img src="{% static 'images/cardphoto3.jpg'%}"
-                        style="width: 300px; height: 220px; background-size: cover;" class="img-fluid"
-                        alt="Recipe Photo"></a>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a href="{% url 'reset_password' %}" class="nav-link">
-                        <h5 class="card-title"><u>Card title</u></h5>
+                <div class="card-body" style="margin-left: 38px;">
+                    <a href="{% url 'recipePage' recipe_data.pk %}" class="nav-link">
+                        <h3 class="card-title"><u>{{recipe_data.title}}</u></h3>
                     </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+                    <p class="card-text mt-3" style="font-size:15px; color: rgba(74, 74, 74, 0.837);">{{recipe_data.description}}</p>
                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="card" style="max-width: 650px; height: 220px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href="{% url 'reset_password' %}" class="nav-link"><img src="{% static 'images/cardphoto1.jpg'%}"
-                        style="width: 300px; height: 220px; background-size: cover;" class="img-fluid"
-                        alt="Recipe Photo"></a>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a href="{% url 'reset_password' %}" class="nav-link">
-                        <h5 class="card-title"><u>Card title</u></h5>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" style="max-width: 650px; height: 220px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href="{% url 'reset_password' %}" class="nav-link"><img src="{% static 'images/cardphoto6.jpg'%}"
-                        style="width: 300px; height: 220px; background-size: cover;" class="img-fluid"
-                        alt="Recipe Photo"></a>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a href="{% url 'reset_password' %}" class="nav-link">
-                        <h5 class="card-title"><u>Card title</u></h5>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" style="max-width: 650px; height: 220px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href="{% url 'reset_password' %}" class="nav-link"><img src="{% static 'images/cardphoto5.jpg'%}"
-                        style="width: 300px; height: 220px; background-size: cover;" class="img-fluid"
-                        alt="Recipe Photo"></a>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a href="{% url 'reset_password' %}" class="nav-link">
-                        <h5 class="card-title"><u>Card title</u></h5>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="card" style="max-width: 650px; height: 220px;">
-        <div class="row g-0">
-            <div class="col-md-4">
-                <a href="{% url 'reset_password' %}" class="nav-link"><img src="{% static 'images/cardphoto4.jpg'%}"
-                        style="width: 300px; height: 220px; background-size: cover;" class="img-fluid"
-                        alt="Recipe Photo"></a>
-            </div>
-            <div class="col-md-8">
-                <div class="card-body">
-                    <a href="{% url 'reset_password' %}" class="nav-link">
-                        <h5 class="card-title"><u>Card title</u></h5>
-                    </a>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% endfor %}
 
 </div>
-
-
-
 
 {% endblock %}

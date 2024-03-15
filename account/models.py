@@ -85,11 +85,13 @@ class User(AbstractBaseUser):
     
 class AddRecipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=100)
+    title = models.TextField()
     description = models.TextField()
-    photo = models.ImageField(upload_to='recipe_photos/', blank=True , null= True)
+    photo = models.ImageField(upload_to='recipe_photos/' , null= True)
     ingredients = models.TextField()
     steps = models.TextField(blank=True , null=True)
+    Servings = models.PositiveIntegerField(default=0, blank=True , null=True)
+    meals = models.CharField(blank=True , null=True)
     prep_time = models.PositiveIntegerField(default=0 , blank=True , null=True) # in minutes
     prep_time_unit = models.CharField(blank=True , null=True)
     created_at = models.DateTimeField(auto_now_add=True)

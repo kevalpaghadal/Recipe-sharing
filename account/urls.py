@@ -8,6 +8,7 @@ urlpatterns = [
     path('userProfile/' , views.userProfile, name='userProfile'),
     path('addRecipe/', views.addRecipe , name='addRecipe'),
     path('yourRecipe/', views.yourRecipe , name='yourRecipe'),
+    path('recipePage/<int:pk>/', views.recipePage , name='recipePage'),
 
     path('activate/<uidb64>/<token>/' , views.activate , name='activate'),
 

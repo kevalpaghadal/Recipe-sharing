@@ -25,14 +25,14 @@
                 <!-- recipe titel -->
                 <div class="col-md-12">
                   <label class="form-label mb-0">Recipe Title</label>
-                  <input type="text" name="titel" class="form-control mb-4 rounded-0 border border-dark" />
+                  <input type="text" name="titel" class="form-control mb-4 rounded-0 border border-dark" required />
                 </div>
 
                 <!-- description -->
                 <div class="col-md-12">
                   <label class="form-label mb-0">Description</label>
-                  <textarea type="text" name="description" rows="6"
-                    class="form-control rounded-0 border border-dark"></textarea>
+                  <textarea type="text" name="description" rows="6" class="form-control rounded-0 border border-dark"
+                    required></textarea>
                 </div>
               </div>
 
@@ -43,7 +43,7 @@
               <label class="form-label mb-0">Photo</label>
 
               <div class="imginputbox1">
-                <input multiple type="file" name="photo" class="imginputbox">
+                <input multiple type="file" name="recipe_photo" class="imginputbox" required>
               </div>
             </div>
           </div>
@@ -68,18 +68,13 @@
 
           <div class="inputfield" id="row">
             <input type="text" id="ingre-1" name="ingre-1" class="form-control rounded-0 border border-dark input_field"
-              placeholder="Add Ingrediants" />
+              placeholder="Add Ingrediants" required />
             <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a>
           </div>
 
-          <div class="inputfield" id="row">
-            <input type="text" id="ingre-2" name="ingre-2" class="form-control rounded-0 border border-dark input_field"
-              placeholder="Add Ingrediants" />
-            <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a>
-          </div>
 
           <div id="newinput"></div>
-          <input type="hidden" name="js_inputCounter" id="js_inputCounter" value="2"/>
+          <input type="hidden" name="js_inputCounter" id="js_inputCounter" value="2" />
           <div class="">
             <button id="rowAdder" type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i
                 class="fa-solid fa-plus"></i>
@@ -101,18 +96,14 @@
           <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter directions below </p>
 
           <div class="inputfield" id="row">
-            <textarea type="text" name="step" class="form-control rounded-0 border border-dark input_field"
+            <textarea type="text" name="step-1" class="form-control rounded-0 border border-dark input_field"
               placeholder="Add Step"></textarea>
             <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
           </div>
 
-          <div class="inputfield" id="row">
-            <textarea type="text" name="step" class="form-control rounded-0 border border-dark input_field"
-              placeholder="Add Step"></textarea>
-            <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
-          </div>
 
           <div id="newinputstep"></div>
+          <input type="hidden" name="js_inputCounter_step" id="js_inputCounter_step" value="2" required />
           <div class="">
             <button id="textareaAdder" type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i
                 class="fa-solid fa-plus"></i>
@@ -123,17 +114,36 @@
           <!-- end ingrediant section -->
           <hr>
 
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <label for="">
+              <h6 class="fw-bold">Servings</h6>
+            </label>
+            <input id="" type="number" name="Servings" min="0" placeholder="0"
+              style="height: 40px; width: 60px; margin-left: 125px; padding: 10px;" required />
+          </div>
+
+          <div class="d-flex align-items-center gap-3 mb-3">
+            <label for="">
+              <h6 class="fw-bold">Meals</h6>
+            </label>
+            <select id="" name="meals" style="height: 40px; width: 200px; padding: 10px; margin-left: 145px;" required>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Side Dish">Side Dish</option>
+            </select>
+          </div>
+
           <div class="d-flex align-items-center gap-3">
             <label for="">
               <h6 class="fw-bold">Prep time </h6>
             </label>
-            <input id=""  type="number"
-              name="prep_time" min="0" placeholder="0" style="height: 40px; width: 60px; margin-left: 115px; padding: 10px;">
+            <input id="" type="number" name="prep_time" min="0" placeholder="0"
+              style="height: 40px; width: 60px; margin-left: 115px; padding: 10px;" required>
 
-            <select id=""  name="prep_time_unit" style="height: 40px; width: 200px; padding: 10px;">
+            <select id="" name="prep_time_unit" style="height: 40px; width: 200px; padding: 10px;" required>
               <option value="min">mins</option>
               <option value="hours">hours</option>
-              <option value="days">days</option>
             </select>
           </div>
 

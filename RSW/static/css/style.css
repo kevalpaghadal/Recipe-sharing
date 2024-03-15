@@ -128,7 +128,7 @@
 }
 
 .zoom-img img:hover{
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 /* ------------------------------------------------------------- */
 /* footer */
@@ -359,4 +359,49 @@ font-size: 25px;
 
 .linkhover:hover{
   color: white;
+}
+
+/* ---------------------------------------- */
+/* recipePage */
+.buttons1{
+  border: 1px solid rgb(255, 162, 0);
+  width: 90px;
+  height: 35px;
+  text-decoration: none;
+  list-style: none;
+  color: rgb(255, 162, 0);
+  text-align: center;
+  padding-top: 4px;
+  font-weight: bold;
+}
+
+.buttons2{
+  border: 1px solid #d54215;
+  width: 90px;
+  height: 35px;
+  text-decoration: none;
+  list-style: none;
+  color: #d54215;
+  text-align: center;
+  padding-top: 4px;
+  font-weight: bold;
+  
+}
+
+.buttons1:hover{
+  transition: 0.2s linear;
+  background-color: rgb(255, 162, 0);
+  color: #f1f1f1;
+}
+
+.buttons2:hover{
+  transition: 0.2s linear;
+  background-color: #d54215;
+  color: #f1f1f1;
+}
+
+/* -------------------------------------- */
+/* homePageRecipe page */
+.iconsize {
+  font-size: 25px;
 }
