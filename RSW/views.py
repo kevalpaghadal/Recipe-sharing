@@ -3,8 +3,7 @@ from account.models import AddRecipe , User
 
 
 def home(request):
-    user = request.user
-    data = AddRecipe.objects.filter(user=user)
+    data = AddRecipe.objects.all().order_by('-updated_at')
 
     context = {
         'data' : data
@@ -13,10 +12,9 @@ def home(request):
 
 def homePageRecipe(request , pk):
 
-    user = request.user
-    data = AddRecipe.objects.filter(user=user, pk=pk)
-
+    data = AddRecipe.objects.filter(pk=pk)
     recipe = AddRecipe.objects.get(pk=pk)
+
 
     ingredient_data = recipe.ingredients
     ingredient_X = []
