@@ -21,7 +21,15 @@ class UserForm(forms.ModelForm):
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['profile_picture', 'address', 'country', 'state', 'city', 'pin_code',]
+        fields = '__all__'
+        widgets = {
+            'profile_picture': forms.ClearableFileInput(attrs={'class': 'input_field', 'id': 'input-file'}),
+            'address': forms.TextInput(attrs={'class': 'input_fields'}),
+            'country': forms.TextInput(attrs={'class': 'input_fields'}),
+            'state': forms.TextInput(attrs={'class': 'input_fields'}),
+            'city': forms.TextInput(attrs={'class': 'input_fields'}),
+            'pin_code': forms.NumberInput(attrs={'class': 'input_fields'}),
+        }
 
     def clean(self):
         cleaned_data = super(UserForm , self).clean()

@@ -109,8 +109,8 @@
 
 .searchicon{
   position: absolute;
-  bottom: 16%;
-  right: 7%;
+  bottom: 14%;
+  right: 8%;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 17px;
@@ -427,4 +427,16 @@ font-size: 25px;
 /* homePageRecipe page */
 .iconsize {
   font-size: 25px;
+}
+
+
+/* ----------------------------------- */
+/* review section */
+.review_profile_img{
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+.font_size{
+  font-size: 10px;
 }

@@ -90,8 +90,22 @@ def logoutUser(request):
 
 @login_required(login_url='loginUser')
 def userProfile(request):
+    if request.method == 'POST' and request.FILES:
+        userprofile = UserProfileForm(request.POST)
+        if userprofile.is_valid():
+            profileuser = userprofile.save(commit=False)
+            profileuser.save()
+            redirect('userProfile')
+        else:
+            print('invalid form')
+            print(userprofile.errors)
+    else:
+        userprofile = UserProfileForm()
+    context = {
+        'userprofile': userprofile,
+    }
     
-    return render(request, 'account/userProfile.html')
+    return render(request, 'account/userProfile.html' , context)
 
 
 @login_required(login_url='loginUser')

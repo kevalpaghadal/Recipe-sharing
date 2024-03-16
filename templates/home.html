@@ -7,10 +7,14 @@
 <div class="backimg" style="height: 41rem; background-image: url('{% static 'images/background_hero_section.jpg' %}');">
     <div class="box">
         <h1 class="text-white pb-3">Search Your Favourite Recipe</h1>
-        <form name="search" class="searchbar">
-            <input type="text" class="input" name="txt" placeholder="Search your favourite food" style="color: black;">
+        <form action="{% url 'srcRecipe'%}" method="POST" class="searchbar">
+            {% csrf_token %}
+            <input type="text" name="search_recipe_id" id="search_recipe_id" placeholder="Search your favourite food"
+                style="color: black;" />
             <i class="fas fa-search searchicon"></i>
         </form>
+
+
     </div>
 </div>
 
@@ -23,20 +27,23 @@
         <div class="col">
             <div class="card h-100">
                 <div class="username d-flex border-bottom">
-                    <img src="{% static 'images/keval3.jpg'%}" alt="" class="userphoto ms-2 my-1 "
+                    <img src="{{recipe_data.user.profile_picture.url}}" alt="" class="userphoto ms-2 my-1 "
                         style="height: 30px; width: 30px; border-radius: 50%;">
-                    <h6 class=" mt-2 ms-2">keval__paghadal</h6>
+                    <h6 class=" mt-2 ms-2">{{recipe_data.user.username}}</h6>
                 </div>
                 <div class="zoom-img">
-                    <a href="{% url 'homePageRecipe' recipe_data.pk %}"><img src="{{recipe_data.photo.url}}" class="" alt="cardphoto1" style="height: 320px;"></a>
+                    <a href="{% url 'homePageRecipe' recipe_data.pk %}"><img src="{{recipe_data.photo.url}}" class=""
+                            alt="cardphoto1" style="height: 320px;"></a>
                 </div>
                 <div class="card-body">
-                    <a href="{% url 'homePageRecipe' recipe_data.pk %}" class="nav-link"><h3 class="card-text">{{recipe_data.title}}</h3></a>
+                    <a href="{% url 'homePageRecipe' recipe_data.pk %}" class="nav-link">
+                        <h3 class="card-text">{{recipe_data.title}}</h3>
+                    </a>
                 </div>
                 <div class="card-body pt-0">
                     <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
                 </div>
-                
+
             </div>
         </div>
         {% endfor %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid d-flex justify-content-center gap-3 flex-wrap mt-5">
+    {% for f_recipe in fetch_recipe %}
+    <div class="card" style="max-width: 730px; height: 300px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <a href="" class="nav-link"><img src="{{f_recipe.photo.url}}"
+                        style="width: 280px; height: 300px;"
+                        alt="Recipe Photo"></a>
+            </div>
+            <div class="col-md-8">
+
+                <div class="card-body" style="margin-left: 38px;">
+                    <a href="" class="nav-link">
+                        <h3 class="card-title"><u>{{f_recipe.title}}</u></h3>
+                    </a>
+                    <p class="card-text mt-3" style="font-size:15px; color: rgba(74, 74, 74, 0.837);">{{f_recipe.description}}</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}
