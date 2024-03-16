@@ -14,7 +14,6 @@
   }
   
   .dropdown-content {
-    
     display: none;
     position: absolute;
     background-color: #fff;
@@ -250,28 +249,20 @@ font-size: 25px;
 }
 
 .imginputbox{
-  position: relative;
-  border: 2px solid;
   height: 244px;
   width: 215px;
-  opacity: 0;
   cursor: pointer;
 }
-
-.imginputbox1{
-  position: absolute;
-  top: 178px;
+.input_field_img{
   height: 244px;
   width: 215px;
-  background: url('../images/recipe-add-photo.png_433-hash');
-  background-position: right;
-  background-size: cover;
 }
+
 
 /* ------------------------------------------------------ */
 /* profile setting */
 .container1{
-  margin: 83px auto;
+  margin: 50px auto;
 }
 
 .row1 {
@@ -308,14 +299,14 @@ font-size: 25px;
 }
 
 .link:hover {
-  color: rgb(255, 162, 0);
+  color: #febf57;
   background-color: rgba(211, 211, 211, 0.136);
 }
 
 .link:focus {
-  color: #d54215;
+  color: #febf57;
   padding-left: 3px;
-  border-left: 8px solid #d54215;
+  border-left: 8px solid #febf57;
  
 }
 
@@ -323,16 +314,39 @@ font-size: 25px;
   padding: 20px 20px;
 }
 
-.addImage__button {
+.addImage_button {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 24px;
-  height: 260px;
-  width: 230px;
-  background-color: rgba(0, 0, 0, .05);
-  cursor: pointer;
+  align-items: center;
+  height: 275px;
+  width: 240px;
+  background-color: #53525215;
+}
+
+.profile_img{
+  margin-bottom: 40px;
+  height: 120px;
+  width: 120px;
+}
+
+.input_field{
+  display: none;
+}
+
+.imgbtn-label{
+  font-weight: bold;
+  text-align: center;
+  color: #febf57;
+  height: 30px;
+  width: 160px;
+  border: 1.5px solid #febf57;
+}
+
+.imgbtn-label:hover{
+  transition: 0.2s linear;
+  color: white;
+  background-color: #febf57;
 }
 
 .addImage__buttonIcon {
@@ -343,7 +357,8 @@ font-size: 25px;
   background-color: #fff;
   height: 120px;
   width: 120px;
-  border: 3px #d54215 solid
+  border: 3px #febf57 solid;
+  overflow: hidden;
 }
 
 .input_fields {
@@ -354,11 +369,19 @@ font-size: 25px;
 }
 
 .linkhover{
-  color: #d54215;
+  height: 37px;
+  width: 150px;
+  color: #febf57;
+  border: 2px solid #febf57;
+  text-align: center;
+  padding-top: 4px;
 }
 
 .linkhover:hover{
+  font-weight: bold;
+  transition: 0.2s linear;
   color: white;
+  background-color: #febf57;
 }
 
 /* ---------------------------------------- */

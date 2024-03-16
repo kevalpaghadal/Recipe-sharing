@@ -1,11 +1,11 @@
 $(document).ready(function () {
-    let inputCounter = 2; // Initialize a counter for input IDs
+    let inputCounter = 3; // Initialize a counter for input IDs
 
     $('#rowAdder').click(function (e) {
         e.preventDefault();
         const newRowAdd =
             '<div class="inputfield" id="row">' +
-            `<input type="text" id="ingre-${inputCounter}" name="ingre-${inputCounter}" class="form-control rounded-0 border border-dark input_field" placeholder="Add Ingredients" />` +
+            `<input type="text" id="ingre-${inputCounter}" name="ingre-${inputCounter}" class="form-control rounded-0 border border-dark input_field1" placeholder="Add Ingredients" />` +
             '<a href=""  id="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a> </div>';
 
         $('#newinput').append(newRowAdd);
@@ -20,12 +20,12 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    let inputCounterX = 2;
+    let inputCounterX = 3;
     $('#textareaAdder').click(function (e) {
         e.preventDefault();
         let newRowAdd =
             '<div class="inputfield">'+
-            `<textarea type="text" id="step-${inputCounterX}" name="step-${inputCounterX}" class="form-control rounded-0 border border-dark input_field" placeholder="Add Step"></textarea>`+
+            `<textarea type="text" id="step-${inputCounterX}" name="step-${inputCounterX}" class="form-control rounded-0 border border-dark input_field1" placeholder="Add Step"></textarea>`+
             '<a href="" class="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a> </div>';
 
         $('#newinputstep').append(newRowAdd);
@@ -40,4 +40,3 @@ $(document).ready(function () {
     });
 });
 
-// rating-review code

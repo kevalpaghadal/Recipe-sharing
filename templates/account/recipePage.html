@@ -46,11 +46,9 @@
                     <h3 class="fw-bold">Ingredients</h3>
 
                     <ul style="margin-left: 20px;">
-                        {% for ingredient in ingredient_X %}
-                        <li>
+                            {% for ingredient in cleaned_data%}
                             <p style="font-size: 15px;">{{ingredient}}</p>
-                        </li>
-                        {% endfor %}
+                            {% endfor %}    
                     </ul>
 
 

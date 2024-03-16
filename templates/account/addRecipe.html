@@ -42,9 +42,14 @@
             <div class="col-md-6 ">
               <label class="form-label mb-0">Photo</label>
 
-              <div class="imginputbox1">
-                <input multiple type="file" name="recipe_photo" class="imginputbox" required>
-              </div>
+              <div class="">
+                <div class="">
+                  <label for="upload-img" class="">
+                    <img src="{% static 'images/recipe-add-photo.png_433-hash'%}" alt="Recipe Photo" class="imginputbox" id="input-img">
+                    </label>
+                    <input type="file" accept="image/jpeg , image/jpg , image/png" id="upload-img" class="" name="recipe_photo" style="display: none;">
+                </div> 
+            </div>
             </div>
           </div>
           <hr>
@@ -67,8 +72,8 @@
             </div> -->
 
           <div class="inputfield" id="row">
-            <input type="text" id="ingre-1" name="ingre-1" class="form-control rounded-0 border border-dark input_field"
-              placeholder="Add Ingrediants" required />
+            <input type="text" id="ingre-1" name="ingre-1"
+              class="form-control rounded-0 border border-dark input_field1" placeholder="Add Ingrediants" required />
             <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark "></i></a>
           </div>
 
@@ -96,7 +101,7 @@
           <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter directions below </p>
 
           <div class="inputfield" id="row">
-            <textarea type="text" name="step-1" class="form-control rounded-0 border border-dark input_field"
+            <textarea type="text" name="step-1" class="form-control rounded-0 border border-dark input_field1"
               placeholder="Add Step"></textarea>
             <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
           </div>
@@ -128,9 +133,10 @@
             </label>
             <select id="" name="meals" style="height: 40px; width: 200px; padding: 10px; margin-left: 145px;" required>
               <option value="Breakfast">Breakfast</option>
-              <option value="Lunch">Lunch</option>
-              <option value="Dinner">Dinner</option>
+              <option value="Main Course">Main Course</option>
               <option value="Side Dish">Side Dish</option>
+              <option value="Snacks">Snacks</option>
+              <option value="Desserts">Desserts</option>
             </select>
           </div>
 

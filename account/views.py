@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from account.models import User, AddRecipe
-from .forms import UserForm
+from .forms import UserForm , UserProfileForm
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from .utils import send_verification_email
@@ -90,8 +90,8 @@ def logoutUser(request):
 
 @login_required(login_url='loginUser')
 def userProfile(request):
-    user = User.objects.get(pk=request.user.pk)
-    return render(request, 'account/userProfile.html', {'user': user})
+    
+    return render(request, 'account/userProfile.html')
 
 
 @login_required(login_url='loginUser')
@@ -151,19 +151,17 @@ def recipePage(request, pk):
 
     recipe = AddRecipe.objects.get(pk=pk)
 
-    ingredient_data = recipe.ingredients
-    ingredient_X = []
-    for ingredient in ingredient_data.split('::: '):
-        ingredient_X.append(ingredient)
+    ingredient_data = recipe.ingredients.split(":::")
+    cleaned_data = [item.replace("," , "").replace("'", "").replace("[" , "").replace("]" , "") for item in ingredient_data]
 
     step_data = recipe.steps
     step_X = []
-    for step in step_data.split('::: '):
+    for step in step_data.split(':::'):
         step_X.append(step)
 
     context = {
         'data': data,
-        'ingredient_X': ingredient_X,
+        'cleaned_data' : cleaned_data,
         'step_X' : step_X,
     }
     return render(request, 'account/recipePage.html', context)

@@ -18,6 +18,11 @@ class UserForm(forms.ModelForm):
             'confirm_password' : forms.PasswordInput(attrs={'class' : 'form-control'}),
         }
 
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['profile_picture', 'address', 'country', 'state', 'city', 'pin_code',]
+
     def clean(self):
         cleaned_data = super(UserForm , self).clean()
         password = cleaned_data.get('password')

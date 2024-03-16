@@ -9,7 +9,7 @@
         <div class="col-4">
             <div class="d-flex gap-2 flex-wrap">
                 <img src="..." alt="" height="60px" width="60px" class="proimg">
-                <h6 class=" d-flex align-items-center">Hii, <b>{{user.email}}</b></h6>
+                <h6 class=" d-flex align-items-center">Hii, <b> {{user.first_name}} {{user.last_name}}</b></h6>
             </div>
             <div class="sidelink">
                 <a href="#" class="d-block link">Profile Setting</a>
@@ -20,12 +20,19 @@
 
         </div>
         <div class="col-7">
-            <form action="#">
+            <form action="{% url 'userProfile' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
 
                 <div class="row">
                     <div class="col-6">
 
-                        <label for="" class="d-block">Display Name *</label>
+                        <label for="" class="d-block">First Name</label>
+                        <input type="text" name="" id="" class="input_fields">
+
+                        <label for="" class="d-block mt-3">Username</label>
+                        <input type="text" name="" id="" class="input_fields">
+
+                        <label for="" class="d-block mt-3">Email</label>
                         <input type="text" name="" id="" class="input_fields">
 
                         <label for="" class="d-block mt-3">Address</label>
@@ -37,36 +44,35 @@
                         <label for="" class="d-block mt-3">State</label>
                         <input type="text" name="" id="" class="input_fields">
 
-                        <label for="" class="d-block mt-3">City</label>
+                        <label for="" class="d-block mt-3">Pin Code</label>
                         <input type="text" name="" id="" class="input_fields">
 
                     </div>
                     <div class="col-6">
-                        <div class="addImage">
-                            <div class="addImage__label pb-3">Add an Image</div>
-                            <label class="addImage__button" for="fileUpload">
-                                <input type="file" id="fileUpload" name="" accept="image/*" value=""
-                                    style="display: none;">
-                                <div class="addImage__buttonIcon">
-                                    <svg class="icon" width="48" height="48" role="img" viewBox="0 0 48 48">
-                                        <path fill="#d54215"
-                                            d="M6 8V2h4v6h6v4h-6v6H6v-6H0V8h6zm6 12v-6h6V8h14l3.66 4H42c2.2 0 4 1.8 4 4v24c0 2.2-1.8 4-4 4H10c-2.2 0-4-1.8-4-4V20h6zm14 18c5.52 0 10-4.48 10-10s-4.48-10-10-10-10 4.48-10 10 4.48 10 10 10zm-6.4-10c0 3.54 2.86 6.4 6.4 6.4 3.54 0 6.4-2.86 6.4-6.4 0-3.54-2.86-6.4-6.4-6.4-3.54 0-6.4 2.86-6.4 6.4z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div>Profile Photo</div>
-                            </label>
-                            <label for="" class="d-block" style="margin-top: 20px;">Pin code</label>
-                            <input type="text" name="" id="" class="input_fields">
+                        <label for="" class="d-block">Last Name</label>
+                        <input type="text" name="" id="" class="input_fields">
+
+                        <div class="">
+                            <div class="pt-3 pb-1">Add an Image</div>
+                            <div class="addImage_button">
+                                <img src="{% static 'images/user.png'%}" alt="Profile Photo" class="profile_img" id="profile-pic">
+                                
+                                <label for="input-file" class="imgbtn-label">Upload image</label>
+                                <input type="file" accept="image/jpeg , image/jpg , image/png" id="input-file" class="input_field">
+                            </div> 
+                        </div>
+
+                        <label for="" class="d-block mt-3">City</label>
+                        <input type="text" name="" id="" class="input_fields">
+
+                        <div class="buttons d-flex gap-2" style="margin-top: 44px;">
+
+                            <a href="{% url 'reset_password' %}" class="nav-link linkhover">Change password</a>
+                            <button type="submit" class="btn btn-danger"
+                                style="padding: 0px 58px;">Save</button>
                         </div>
                     </div>
-                    <div class="buttons d-flex justify-content-end gap-2 pb-3 ps-0 pe-3">
-
-                        <button class="btn btn-outline-danger linkhover"><a href="{% url 'reset_password' %}"
-                                class="nav-link">Change password</a></button>
-                        <button type="submit" class="btn btn-danger"
-                            style="padding-left: 4rem; padding-right: 4rem;">Save</button>
-                    </div>
+                    
                 </div>
             </form>
         </div>
