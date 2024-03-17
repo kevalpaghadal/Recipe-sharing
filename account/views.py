@@ -92,8 +92,27 @@ def logoutUser(request):
 
 @login_required(login_url='loginUser')
 def userProfile(request):
+    user = request.user
+
+    if request.method == 'POST':
+        userform = UserForm(request.POST , instance=user)
+        if userform.is_valid():
+            userform.save()
+            # profilePic = request.POST['profile_picture']
+            # print(profilePic)
+            messages.success(request , "profile save suffully")
+        else:
+            messages.error(request , 'profile not submite')
+        return redirect('userProfile')
+    else:
+        userform = UserProfileForm(instance=user)
     
-    return render(request, 'account/userProfile.html')
+    context = {
+        'user' : user,
+        'userform' : userform,
+    }
+
+    return render(request, 'account/userProfile.html', context)
 
 
 @login_required(login_url='loginUser')

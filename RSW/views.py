@@ -26,6 +26,7 @@ def homePageRecipe(request , pk):
                 'data' : data,
                 'userFlag' : True,
                 'review' : review,
+                'request': request,
             }
 
         except:
@@ -39,6 +40,7 @@ def homePageRecipe(request , pk):
             context = {
                 'data' : data,
                 'userFlag' : True,
+                'request': request,
             }
         return render(request , 'homePageRecipe.html' , context)
     else:
@@ -48,6 +50,7 @@ def homePageRecipe(request , pk):
         context = {
             'data':data,
             'userFlag' : False,
+            'request': request,
         }
     return render(request , 'homePageRecipe.html' , context)
 

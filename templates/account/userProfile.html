@@ -27,45 +27,44 @@
                     <div class="col-6">
 
                         <label for="" class="d-block">First Name *</label>
-                        <input type="text" name="" id="" class="input_fields" value="{{user.first_name}}" required>
+                        {{userform.first_name}}
 
                         <label for="" class="d-block mt-3">Username *</label>
-                        <input type="text" name="" id="" class="input_fields" value="{{user.username}}" required>
+                        {{userform.username}}
 
                         <label for="" class="d-block mt-3">Email *</label>
-                        <input type="text" name="" id=""  disabled class="input_fields" value="{{user.email}}" required>
+                        {{userform.email}}
 
                         <label for="" class="d-block mt-3">Address</label>
-                        {{user_profile.address}}
-
+                        {{userform.address}}
 
                         <label for="" class="d-block mt-3">Country</label>
-                        {{user_profile.country}}
+                        {{userform.country}}
 
                         <label for="" class="d-block mt-3">State</label>
-                        {{user_profile.state}}
+                        {{userform.state}}
 
                         <label for="" class="d-block mt-3">Pin Code</label>
-                        {{user_profile.pin_code}}
+                        {{userform.pin_code}}
 
                     </div>
                     <div class="col-6">
                         <label for="" class="d-block">Last Name *</label>
-                        <input type="text" name="" id="" class="input_fields" value="{{user.last_name}}" required>
+                        {{userform.last_name}}
 
                         <div class="">
                             <div class="pt-3 pb-1">Add an Image</div>
                             <div class="addImage_button">
-                                <img src="{% static 'images/user.png'%}" alt="Profile Photo" class="profile_img"
+                                <img src="{{user.profile_picture.url}}" alt="Profile Photo" class="profile_img"
                                     id="profile-pic">
 
                                 <label for="input-file" class="imgbtn-label">Upload image</label>
-                                {{userprofile.profile_picture}}
+                                <input type="file" name="profile_picture" id="input-file" style="display: none;">
                             </div>
                         </div>
 
                         <label for="" class="d-block mt-3">City</label>
-                        {{user_profile.city}}
+                        {{userform.city}}
 
                         <div class="buttons d-flex gap-2" style="margin-top: 44px;">
 

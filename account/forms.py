@@ -23,7 +23,11 @@ class UserProfileForm(forms.ModelForm):
         model = User
         fields = '__all__'
         widgets = {
-            'profile_picture': forms.ClearableFileInput(attrs={'class': 'input_field', 'id': 'input-file'}),
+            'first_name' : forms.TextInput(attrs={'class' : 'input_fields'}),
+            'last_name' : forms.TextInput(attrs={'class' : 'input_fields'}),
+            'username' : forms.TextInput(attrs={'class' : 'input_fields'}),
+            'email' : forms.EmailInput(attrs={'class' : 'input_fields'}),
+            # 'profile_picture': forms.ClearableFileInput(attrs={'class': 'input_field', 'id': 'input-file'}),
             'address': forms.TextInput(attrs={'class': 'input_fields'}),
             'country': forms.TextInput(attrs={'class': 'input_fields'}),
             'state': forms.TextInput(attrs={'class': 'input_fields'}),
