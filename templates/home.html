@@ -22,18 +22,18 @@
 
 <!-- card section -->
 <div class="container mt-4">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="d-flex flex-wrap justify-content-center gap-3">
         {% for recipe_data in data %}
-        <div class="col">
-            <div class="card h-100">
+        <div class="">
+            <div class="card" style="height: 400px; width: 350px;">
                 <div class="username d-flex border-bottom">
                     <img src="{{recipe_data.user.profile_picture.url}}" alt="" class="userphoto ms-2 my-1 "
                         style="height: 30px; width: 30px; border-radius: 50%;">
                     <h6 class=" mt-2 ms-2">{{recipe_data.user.username}}</h6>
                 </div>
                 <div class="zoom-img">
-                    <a href="{% url 'homePageRecipe' recipe_data.pk %}"><img src="{{recipe_data.photo.url}}" class=""
-                            alt="cardphoto1" style="height: 320px;"></a>
+                    <a href="{% url 'homePageRecipe' recipe_data.pk %}"><img src="{{recipe_data.photo.url}}"
+                            alt="cardphoto1" style="height: 249px; width: 349px;"></a>
                 </div>
                 <div class="card-body">
                     <a href="{% url 'homePageRecipe' recipe_data.pk %}" class="nav-link">

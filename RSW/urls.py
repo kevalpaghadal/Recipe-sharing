@@ -26,6 +26,7 @@ urlpatterns = [
     path('homePageRecipe/<int:pk>/' , views.homePageRecipe, name='homePageRecipe'),
     path('account/', include('account.urls')),
     path('srcRecipe/' , views.srcRecipe , name='srcRecipe'),
+    path('srcRecipePage/<int:pk>' , views.srcRecipePage , name='srcRecipePage'),
 
     path('contact_us', views.contact_us, name='contact_us'),
     path('about_us', views.about_us, name='about_us'),

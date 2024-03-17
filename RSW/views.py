@@ -34,17 +34,11 @@ def homePageRecipe(request , pk):
                 review = request.POST.get('Reviews')
         
                 recipe_rating = Review( recipe=recipe, user=user, star=Star , review=review)
-                recipe_rating.save()
-
-            # review = Review.objects.filter(user=user , recipe=pk)
-                
-            
-        
+                recipe_rating.save()        
 
             context = {
                 'data' : data,
                 'userFlag' : True,
-                # 'review' : review,
             }
         return render(request , 'homePageRecipe.html' , context)
     else:
@@ -75,7 +69,46 @@ def srcRecipe(request):
     }   
 
 
-    return render(request, 'searchPageRecipe.html' , context)
+    return render(request, 'searchRecipe.html' , context)
+
+def srcRecipePage(request , pk):
+    if  request.user.is_authenticated:
+        recipe = AddRecipe.objects.get(pk=pk)
+        user = request.user
+        data = AddRecipe.objects.get(pk=pk)
+        try:
+            review = Review.objects.get(user=user , recipe=pk)
+
+
+            context = {
+                'data' : data,
+                'userFlag' : True,
+                'review' : review,
+            }
+
+        except:
+            if request.method == 'POST':
+                Star = request.POST.get('star-value')
+                review = request.POST.get('Reviews')
+        
+                recipe_rating = Review( recipe=recipe, user=user, star=Star , review=review)
+                recipe_rating.save()        
+
+            context = {
+                'data' : data,
+                'userFlag' : True,
+            }
+        return render(request , 'homePageRecipe.html' , context)
+     
+    else:
+
+        data = AddRecipe.objects.get(pk=pk)
+    
+        context = {
+            'data':data,
+            'userFlag' : False,
+        }
+    return render(request , 'searchRecipePage.html' , context)
 
 def contact_us(request):
     return render(request , 'contact_us.html')
