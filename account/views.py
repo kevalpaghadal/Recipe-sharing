@@ -94,14 +94,12 @@ def logoutUser(request):
 def userProfile(request):
     user = request.user
 
-    if request.method == 'POST':
-        userform = UserForm(request.POST , instance=user)
+    if request.method == 'POST' and request.FILES:
+        userform = UserProfileForm(request.POST , instance=user)
         print('ok')
         if userform.is_valid():
             print('ok')
             userform.save()
-            # profilePic = request.POST['profile_picture']
-            # print(profilePic)
             messages.success(request , "profile save suffully")
         else:
             messages.error(request , 'profile not submite')

@@ -37,10 +37,12 @@ class UserProfileForm(forms.ModelForm):
     state = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     city = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     pin_code = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    profile_picture = forms.ImageField(widget=forms.FileInput(attrs={'class': 'input_fields', 'id': 'input-file'}))
+
 
     class Meta:
         model = User
-        fields = ['first_name' , 'last_name', 'username' ,'email', 'address', 'country', 'state' , 'city' , 'pin_code']
+        fields = ['first_name' , 'last_name', 'username' ,'email', 'address', 'country', 'state' , 'city' , 'pin_code' , 'profile_picture']
 
 # class UserProfileForm(forms.ModelForm):
 #     class Meta:
