@@ -26,32 +26,32 @@
                 <div class="row">
                     <div class="col-6">
 
-                        <label for="" class="d-block">First Name</label>
-                        <input type="text" name="" id="" class="input_fields" value="{{user.first_name}}">
+                        <label for="" class="d-block">First Name *</label>
+                        <input type="text" name="" id="" class="input_fields" value="{{user.first_name}}" required>
 
-                        <label for="" class="d-block mt-3">Username</label>
-                        <input type="text" name="" id="" class="input_fields" value="{{user.username}}">
+                        <label for="" class="d-block mt-3">Username *</label>
+                        <input type="text" name="" id="" class="input_fields" value="{{user.username}}" required>
 
-                        <label for="" class="d-block mt-3">Email</label>
-                        <input type="text" name="" id=""  disabled class="input_fields" value="{{user.email}}">
+                        <label for="" class="d-block mt-3">Email *</label>
+                        <input type="text" name="" id=""  disabled class="input_fields" value="{{user.email}}" required>
 
                         <label for="" class="d-block mt-3">Address</label>
-                        {{userprofile.address}}
+                        {{user_profile.address}}
 
 
                         <label for="" class="d-block mt-3">Country</label>
-                        {{userprofile.country}}
+                        {{user_profile.country}}
 
                         <label for="" class="d-block mt-3">State</label>
-                        {{userprofile.state}}
+                        {{user_profile.state}}
 
                         <label for="" class="d-block mt-3">Pin Code</label>
-                        {{userprofile.pin_code}}
+                        {{user_profile.pin_code}}
 
                     </div>
                     <div class="col-6">
-                        <label for="" class="d-block">Last Name</label>
-                        <input type="text" name="" id="" class="input_fields" value="{{user.last_name}}">
+                        <label for="" class="d-block">Last Name *</label>
+                        <input type="text" name="" id="" class="input_fields" value="{{user.last_name}}" required>
 
                         <div class="">
                             <div class="pt-3 pb-1">Add an Image</div>
@@ -65,7 +65,7 @@
                         </div>
 
                         <label for="" class="d-block mt-3">City</label>
-                        {{userprofile.city}}
+                        {{user_profile.city}}
 
                         <div class="buttons d-flex gap-2" style="margin-top: 44px;">
 

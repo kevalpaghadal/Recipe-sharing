@@ -8,6 +8,9 @@ from .utils import send_verification_email
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 
+from django.contrib import messages
+from django.shortcuts import get_object_or_404
+
 
 # Create your views here.
 
@@ -87,25 +90,10 @@ def logoutUser(request):
     messages.info(request, 'You are logged out.')
     return redirect('loginUser')
 
-
 @login_required(login_url='loginUser')
 def userProfile(request):
-    if request.method == 'POST' and request.FILES:
-        userprofile = UserProfileForm(request.POST)
-        if userprofile.is_valid():
-            profileuser = userprofile.save(commit=False)
-            profileuser.save()
-            redirect('userProfile')
-        else:
-            print('invalid form')
-            print(userprofile.errors)
-    else:
-        userprofile = UserProfileForm()
-    context = {
-        'userprofile': userprofile,
-    }
     
-    return render(request, 'account/userProfile.html' , context)
+    return render(request, 'account/userProfile.html')
 
 
 @login_required(login_url='loginUser')
