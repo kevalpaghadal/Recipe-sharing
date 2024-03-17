@@ -18,23 +18,6 @@ class UserForm(forms.ModelForm):
             'confirm_password' : forms.PasswordInput(attrs={'class' : 'form-control'}),
         }
 
-class UserProfileForm(forms.ModelForm):
-    class Meta:
-        model = User
-        fields = '__all__'
-        widgets = {
-            'first_name' : forms.TextInput(attrs={'class' : 'input_fields'}),
-            'last_name' : forms.TextInput(attrs={'class' : 'input_fields'}),
-            'username' : forms.TextInput(attrs={'class' : 'input_fields'}),
-            'email' : forms.EmailInput(attrs={'class' : 'input_fields'}),
-            # 'profile_picture': forms.ClearableFileInput(attrs={'class': 'input_field', 'id': 'input-file'}),
-            'address': forms.TextInput(attrs={'class': 'input_fields'}),
-            'country': forms.TextInput(attrs={'class': 'input_fields'}),
-            'state': forms.TextInput(attrs={'class': 'input_fields'}),
-            'city': forms.TextInput(attrs={'class': 'input_fields'}),
-            'pin_code': forms.NumberInput(attrs={'class': 'input_fields'}),
-        }
-
     def clean(self):
         cleaned_data = super(UserForm , self).clean()
         password = cleaned_data.get('password')
@@ -42,3 +25,38 @@ class UserProfileForm(forms.ModelForm):
 
         if password != confirm_password:
             raise forms.ValidationError("password does not match!")
+
+
+class UserProfileForm(forms.ModelForm):
+    first_name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    last_name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'class' : 'input_fields'}))
+    address = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    country = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    state = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    city = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+    pin_code = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
+
+    class Meta:
+        model = User
+        fields = ['first_name' , 'last_name', 'username' ,'email', 'address', 'country', 'state' , 'city' , 'pin_code']
+
+# class UserProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = '__all__'
+#         widgets = {
+#             'first_name' : forms.TextInput(attrs={'class' : 'input_fields'}),
+#             'last_name' : forms.TextInput(attrs={'class' : 'input_fields'}),
+#             'username' : forms.TextInput(attrs={'class' : 'input_fields'}),
+#             'email' : forms.EmailInput(attrs={'class' : 'input_fields'}),
+#             # 'profile_picture': forms.ClearableFileInput(attrs={'class': 'input_field', 'id': 'input-file'}),
+#             'address': forms.TextInput(attrs={'class': 'input_fields'}),
+#             'country': forms.TextInput(attrs={'class': 'input_fields'}),
+#             'state': forms.TextInput(attrs={'class': 'input_fields'}),
+#             'city': forms.TextInput(attrs={'class': 'input_fields'}),
+#             'pin_code': forms.NumberInput(attrs={'class': 'input_fields'}),
+#         }
+
+    

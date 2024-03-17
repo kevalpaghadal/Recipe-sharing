@@ -96,7 +96,9 @@ def userProfile(request):
 
     if request.method == 'POST':
         userform = UserForm(request.POST , instance=user)
+        print('ok')
         if userform.is_valid():
+            print('ok')
             userform.save()
             # profilePic = request.POST['profile_picture']
             # print(profilePic)
@@ -106,6 +108,7 @@ def userProfile(request):
         return redirect('userProfile')
     else:
         userform = UserProfileForm(instance=user)
+        print('no one')
     
     context = {
         'user' : user,
