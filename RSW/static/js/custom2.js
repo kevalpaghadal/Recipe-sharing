@@ -1,4 +1,10 @@
-
+// home search bar logic
+// window.onload = function() {
+//     document.getElementById('search-type').addEventListener('change', function() {
+//       var selectedType = this.value;
+//       document.getElementById('search_recipe_id').value = selectedType;
+//     });
+//   };
 
 // profile photo logic
 

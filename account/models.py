@@ -41,11 +41,11 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
 
-    first_name = models.CharField(max_length = 50)
-    last_name = models.CharField(max_length = 50)
-    username = models.CharField(max_length = 50 , unique = True)
-    email  = models.EmailField(max_length = 100 , unique = True)
-    phone_number = models.CharField(max_length = 10 , blank = True)
+    first_name = models.CharField(max_length = 50 , blank=True , null=True)
+    last_name = models.CharField(max_length = 50 , blank=True , null=True)
+    username = models.CharField(max_length = 50 , unique = True , null=True)
+    email  = models.EmailField(max_length = 100 , unique = True , null=True)
+    phone_number = models.CharField(max_length = 10 , blank = True , null=True)
     profile_picture = models.ImageField(upload_to='users/profile_picture' , blank=True , null= True , default='users/profile_picture/profile_avatar.png')
     address = models.CharField(max_length = 250 , blank=True , null=True)
     country = models.CharField(max_length = 30 , blank=True , null=True)
@@ -88,7 +88,7 @@ class AddRecipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.TextField()
     description = models.TextField()
-    photo = models.ImageField(upload_to='recipe_photos/' , null= True)
+    photo = models.ImageField(upload_to='users/recipe_photos/' , null= True)
     ingredients = models.TextField()
     steps = models.TextField(blank=True , null=True)
     Servings = models.PositiveIntegerField(default=0, blank=True , null=True)

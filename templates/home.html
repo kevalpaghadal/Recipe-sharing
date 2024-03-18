@@ -5,13 +5,24 @@
 {% block content %}
 
 <div class="backimg" style="height: 41rem; background-image: url('{% static 'images/background_hero_section.jpg' %}');">
+    <!-- <h1 class="text-white pb-3">Search Your Favourite Recipe</h1> -->
     <div class="box">
-        <h1 class="text-white pb-3">Search Your Favourite Recipe</h1>
         <form action="{% url 'srcRecipe'%}" method="POST" class="searchbar">
             {% csrf_token %}
-            <input type="text" name="search_recipe_id" id="search_recipe_id" placeholder="Search your favourite food"
-                style="color: black;" />
+            <input type="text" name="search_recipe_id" id="search_recipe_id" class="input1" placeholder="Search your favourite food"
+                style="color: black;"/>
             <i class="fas fa-search searchicon"></i>
+
+            <select id="search-type" name="search_type">
+                <option value="All Types" selected>All Types</option>
+                <option value="Breakfast">Breakfast</option>
+                <option value="Main Course">Main Course</option>
+                <option value="Side Dish">Side Dish</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Desserts">Desserts</option>
+            </select>
+
+            <button type="submit" class="srcbutton">Search</button>
         </form>
 
 

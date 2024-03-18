@@ -91,26 +91,45 @@
 
 .box{
   position: absolute;
-  top: 41%;
-  left: 33%;
+  top: 49%;
+  left: 21%;
 }
 
-.searchbar input{
+.searchbar .input1{
   position: relative;
   width: 500px;
   height: 50px;
   /* background-color: rgba(0, 0, 0, 0.51); */
   outline: none;
   border: 3.5px;
-  border-radius: 50px;
+  /* border-radius: 50px; */
   color: #ffffffc8;
   padding-left: 20px;
 }
+.searchbar select{
+  position: relative;
+  width: 160px;
+  height: 50px;
+  outline: none;
+  border: 3.5px;
+  padding-left: 10px;
+}
+
+.searchbar .srcbutton{
+  position: relative;
+  width: 160px;
+  height: 50px;
+  outline: none;
+  border: 3.5px;
+  padding-left: 10px;
+}
+
+
 
 .searchicon{
   position: absolute;
-  bottom: 14%;
-  right: 8%;
+  bottom: 33%;
+  right: 41%;
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 17px;

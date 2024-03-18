@@ -94,23 +94,22 @@ def logoutUser(request):
 def userProfile(request):
     user = request.user
 
-    if request.method == 'POST' and request.FILES:
-        userform = UserProfileForm(request.POST , instance=user)
-        print('ok')
+    if request.method == 'POST':
+        userform = UserProfileForm(request.POST, request.FILES, instance=user)
         if userform.is_valid():
-            print('ok')
             userform.save()
-            messages.success(request , "profile save suffully")
+            messages.success(request, 'Congratulations! Your profile has been updated.')
+            return redirect('userProfile')
         else:
-            messages.error(request , 'profile not submite')
-        return redirect('userProfile')
+            # Print form errors for debugging
+            print(userform.errors)
+            messages.error(request, 'Invalid form data. Please correct the errors.')
     else:
         userform = UserProfileForm(instance=user)
-        print('no one')
     
     context = {
-        'user' : user,
-        'userform' : userform,
+        'user': user,
+        'userform': userform,
     }
 
     return render(request, 'account/userProfile.html', context)
@@ -133,12 +132,12 @@ def addRecipe(request):
         # ingrediants input fileds loop
         ingrediant_ct = request.POST['js_inputCounter']
         for i in range(1, int(ingrediant_ct)):
-            ingredients.append(request.POST['ingre-'+str(i)]+':::')
+            ingredients.append(request.POST['ingre-'+str(i)])
 
         # step input fileds loop
         step_ct = request.POST['js_inputCounter_step']
         for i in range(1, int(step_ct)):
-            steps.append(request.POST['step-'+str(i)]+":::")
+            steps.append(request.POST['step-'+str(i)])
 
         prep_time = request.POST['prep_time']
         prep_time_unit = request.POST['prep_time_unit']
@@ -166,25 +165,20 @@ def yourRecipe(request):
     return render(request, 'account/yourRecipe.html', context)
 
 @login_required(login_url='loginUser')
+def delete_recipe(request , pk):
+    recipe = get_object_or_404(AddRecipe , pk=pk)
+    recipe.delete()
+    return redirect('yourRecipe')
+
+@login_required(login_url='loginUser')
 def recipePage(request, pk):
 
     user = request.user
     data = AddRecipe.objects.filter(user=user, pk=pk)
 
-    recipe = AddRecipe.objects.get(pk=pk)
-
-    ingredient_data = recipe.ingredients.split(":::")
-    cleaned_data = [item.replace("," , "").replace("'", "").replace("[" , "").replace("]" , "") for item in ingredient_data]
-
-    step_data = recipe.steps
-    step_X = []
-    for step in step_data.split(':::'):
-        step_X.append(step)
 
     context = {
         'data': data,
-        'cleaned_data' : cleaned_data,
-        'step_X' : step_X,
     }
     return render(request, 'account/recipePage.html', context)
 

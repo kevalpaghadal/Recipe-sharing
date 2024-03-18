@@ -57,19 +57,37 @@ def homePageRecipe(request , pk):
 def srcRecipe(request):
     
     query = request.POST.get('search_recipe_id')
-    print(query)
+    search_type = request.POST.get('search_type')
+    print(search_type)
+    # print(query)
 
-    if query == None or query == "":
-        return redirect('home')
+    if query == None or query == "" and search_type == 'All Types':
+        fetch_recipe = AddRecipe.objects.all()
+    
+    elif search_type == 'Breakfast':
+        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
+
+    elif search_type == 'Main Course':
+        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
+
+    elif search_type == 'Side Dish':
+        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
+
+    elif search_type == 'Snacks':
+        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
+
+    elif search_type == 'Desserts':
+        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
+
     else:
         fetch_recipe = AddRecipe.objects.filter(
             Q(title__icontains=query) |
             Q(meals__icontains=query) |
-            Q(ingredients__icontains=query))
+            Q(ingredients__icontains=query)) 
         
     context = {
         'fetch_recipe' : fetch_recipe
-    }   
+    }
 
 
     return render(request, 'searchRecipe.html' , context)
@@ -111,7 +129,11 @@ def srcRecipePage(request , pk):
             'data':data,
             'userFlag' : False,
         }
-    return render(request , 'searchRecipePage.html' , context)
+    return render(request , 'homePageRecipe.html' , context)
+
+
+
+
 
 def contact_us(request):
     return render(request , 'contact_us.html')

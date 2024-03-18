@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let inputCounter = 3; // Initialize a counter for input IDs
+    let inputCounter = 2; // Initialize a counter for input IDs
 
     $('#rowAdder').click(function (e) {
         e.preventDefault();
@@ -20,7 +20,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    let inputCounterX = 3;
+    let inputCounterX = 2;
     $('#textareaAdder').click(function (e) {
         e.preventDefault();
         let newRowAdd =

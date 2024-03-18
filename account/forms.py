@@ -31,18 +31,18 @@ class UserProfileForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     last_name = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     username = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class' : 'input_fields'}))
+    # email = forms.EmailField(widget=forms.EmailInput(attrs={'class' : 'input_fields'}))
     address = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     country = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     state = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     city = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
     pin_code = forms.CharField(widget=forms.TextInput(attrs={'class' : 'input_fields'}))
-    profile_picture = forms.ImageField(widget=forms.FileInput(attrs={'class': 'input_fields', 'id': 'input-file'}))
+    profile_picture = forms.ImageField(widget=forms.FileInput(attrs={'id': 'input-file' , 'style': 'display : none;'}))
 
 
     class Meta:
         model = User
-        fields = ['first_name' , 'last_name', 'username' ,'email', 'address', 'country', 'state' , 'city' , 'pin_code' , 'profile_picture']
+        fields = ['first_name' , 'last_name', 'username' , 'address', 'country', 'state' , 'city' , 'pin_code' , 'profile_picture']
 
 # class UserProfileForm(forms.ModelForm):
 #     class Meta:

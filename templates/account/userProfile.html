@@ -32,9 +32,6 @@
                         <label for="" class="d-block mt-3">Username *</label>
                         {{userform.username}}
 
-                        <label for="" class="d-block mt-3">Email *</label>
-                        {{userform.email}}
-
                         <label for="" class="d-block mt-3">Address</label>
                         {{userform.address}}
 
@@ -75,6 +72,12 @@
 
                 </div>
             </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- load alerts message -->
+            {% include 'includes/alerts.html'%}
         </div>
     </div>
 </div>

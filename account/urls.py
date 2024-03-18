@@ -10,6 +10,8 @@ urlpatterns = [
     path('yourRecipe/', views.yourRecipe , name='yourRecipe'),
     path('recipePage/<int:pk>/', views.recipePage , name='recipePage'),
 
+    path('delete_recipe/<int:pk>/', views.delete_recipe , name='delete_recipe'),
+
     path('activate/<uidb64>/<token>/' , views.activate , name='activate'),
 
     path('forgot_password/' ,views.forgot_password , name='forgot_password'),
