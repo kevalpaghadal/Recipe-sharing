@@ -47,7 +47,7 @@
                   <label for="upload-img" class="">
                     <img src="{% static 'images/recipe-add-photo.png_433-hash'%}" alt="Recipe Photo" class="imginputbox" id="input-img">
                     </label>
-                    <input type="file" accept="image/jpeg , image/jpg , image/png" id="upload-img" class="" name="recipe_photo" style="display: none;">
+                    <input type="file" accept="image/jpeg , image/jpg , image/png" id="upload-img" class="" name="recipe_photo" style="display: none;" required>
                 </div> 
             </div>
             </div>
@@ -166,6 +166,12 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- load alerts message -->
+        {% include 'includes/alerts.html'%}
+    </div>
+</div>
 </div>
 
 {% endblock %}

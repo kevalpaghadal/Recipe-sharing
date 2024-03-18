@@ -148,7 +148,7 @@ def addRecipe(request):
         Recipe_data = AddRecipe(user=user, title=title, description=description, photo=photo,
                                 ingredients=ingredients, steps=steps, Servings=Servings, meals=meals, prep_time=prep_time, prep_time_unit=prep_time_unit)
         Recipe_data.save()
-
+        messages.success(request , 'Recipe Submited sucessfully')
         return redirect('addRecipe')
 
     return render(request, 'account/addRecipe.html')
