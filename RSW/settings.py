@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jet',
+
     'django_social_share',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -74,6 +76,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'RSW.wsgi.application'
 
+JET_DEFAULT_THEME = 'light-gray'  # or 'dark-gray'
+
+JET_SIDE_MENU_COMPACT = True
+
+JET_THEMES = [
+    {
+        'theme': 'default',  # or 'light-gray' or 'dark-gray'
+        'color': '#febf57',  # You can change this color
+        'title': 'Default'
+    }
+]
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

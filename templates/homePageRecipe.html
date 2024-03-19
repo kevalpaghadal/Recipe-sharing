@@ -44,15 +44,13 @@
 
                     <!-- ingredients sections -->
                     <h3 class="fw-bold">Ingredients</h3>
-
-                    <div style="margin-top: 10px;">
-                        <p style="font-size: 15px;">½ cup whole milk – cold or chilled</p>
-                        <p style="font-size: 15px;">½ cup whole milk – cold or chilled</p>
-                        <p style="font-size: 15px;">½ cup whole milk – cold or chilled</p>
-                        <p style="font-size: 15px;">½ cup whole milk – cold or chilled</p>
-                        <p style="font-size: 15px;">½ cup whole milk – cold or chilled</p>
-                        <p style="font-size: 15px;">½ cup whole milk – cold or chilled</p>
-                    </div>
+                    <ul style="margin-left: 20px;">
+                        {% for ingredient in ingredient_data %}
+                        <li>
+                            <p style="font-size: 15px;">{{ ingredient }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
 
 
                     <!-- end ingretiant section -->
@@ -61,19 +59,13 @@
 
                     <!-- direction section -->
                     <h3 class="fw-bold">Directions</h3>
-                    <div style=" margin-top: 10px;">
-                        <p class="mb-0"><b>step-1</b></p>
-                        <p style="font-size: 15px;">Take ¼ cup of pistachios in a food chopper or spice-grinder or mixer-grinder. Grind the pistachios to a semi-fine or fine powder. Remove and set aside.</p>
-
-                        <p class="mb-0"><b>step-2</b></p>
-                        <p style="font-size: 15px;">Take ¼ cup of pistachios in a food chopper or spice-grinder or mixer-grinder. Grind the pistachios to a semi-fine or fine powder. Remove and set aside.</p>
-
-                        <p class="mb-0"><b>step-3</b></p>
-                        <p style="font-size: 15px;">Take ¼ cup of pistachios in a food chopper or spice-grinder or mixer-grinder. Grind the pistachios to a semi-fine or fine powder. Remove and set aside.</p>
-
-                        <p class="mb-0"><b>step-4</b></p>
-                        <p style="font-size: 15px;">Take ¼ cup of pistachios in a food chopper or spice-grinder or mixer-grinder. Grind the pistachios to a semi-fine or fine powder. Remove and set aside.</p>
-                    </div>
+                    <ul style="margin-left: 20px;">
+                        {% for step in step_data %}
+                        <li>
+                            <p style="font-size: 15px;">{{ step }}</p>
+                        </li>
+                        {% endfor %}
+                    </ul>
                     <!-- end ingrediant section -->
                     <hr>
 

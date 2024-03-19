@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager , AbstractBaseUser
 from django.core.validators import MaxValueValidator, MinValueValidator
+import json
 
 
 # Create your models here.
@@ -100,6 +101,12 @@ class AddRecipe(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def set_ingredients(self, value):
+        self.ingredients = json.dumps(value)
+
+    def get_ingredients(self):
+        return json.loads(self.ingredients)
 
 class Review(models.Model):
     recipe = models.ForeignKey(AddRecipe, on_delete=models.SET_NULL, null=True)
@@ -111,3 +118,11 @@ class Review(models.Model):
 
     def __unicode__(self):
         self.recipe
+
+
+class ContactUs(models.Model):
+    email = models.EmailField(null=True, blank=True)
+    message = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.email

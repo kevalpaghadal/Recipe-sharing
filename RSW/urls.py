@@ -21,6 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('admin/', admin.site.urls , name='admin'),
     path('' , views.home, name='home'),
     path('homePageRecipe/<int:pk>/' , views.homePageRecipe, name='homePageRecipe'),

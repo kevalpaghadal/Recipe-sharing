@@ -15,6 +15,7 @@ from django.shortcuts import get_object_or_404
 # Create your views here.
 
 def registerUser(request):
+    web_title = 'register'
     if request.user.is_authenticated:
         messages.warning(request, 'You are already logged in!')
         return redirect('home')
@@ -42,6 +43,7 @@ def registerUser(request):
         form = UserForm()
     context = {
         'form': form,
+        'web_title' : web_title
     }
     return render(request, 'account/registerUser.html', context)
 
@@ -65,6 +67,7 @@ def activate(request, uidb64, token):
 
 
 def loginUser(request):
+    web_title = 'login'
     if request.user.is_authenticated:
         messages.warning(request, 'You are already logged in!')
         return redirect('home')
@@ -82,7 +85,8 @@ def loginUser(request):
         else:
             messages.error(request, 'Invalid login')
             return redirect('loginUser')
-    return render(request, 'account/loginUser.html')
+        
+    return render(request, 'account/loginUser.html' , {'web_title': web_title})
 
 
 def logoutUser(request):
@@ -92,6 +96,7 @@ def logoutUser(request):
 
 @login_required(login_url='loginUser')
 def userProfile(request):
+    web_title = 'profile'
     user = request.user
 
     if request.method == 'POST':
@@ -110,6 +115,8 @@ def userProfile(request):
     context = {
         'user': user,
         'userform': userform,
+        'web_title' : web_title
+        
     }
 
     return render(request, 'account/userProfile.html', context)
@@ -117,6 +124,7 @@ def userProfile(request):
 
 @login_required(login_url='loginUser')
 def addRecipe(request):
+    web_title = 'Add Recipe'
 
     ingredients = []
     steps = []
@@ -145,22 +153,27 @@ def addRecipe(request):
         Servings = request.POST['Servings']
 
 
-        Recipe_data = AddRecipe(user=user, title=title, description=description, photo=photo,
-                                ingredients=ingredients, steps=steps, Servings=Servings, meals=meals, prep_time=prep_time, prep_time_unit=prep_time_unit)
+        Recipe_data = AddRecipe(user=user, title=title, description=description, photo=photo,steps=steps, Servings=Servings, meals=meals, prep_time=prep_time, prep_time_unit=prep_time_unit)
+    
+        Recipe_data.set_ingredients(ingredients)
+
         Recipe_data.save()
         messages.success(request , 'Recipe Submited sucessfully')
         return redirect('addRecipe')
 
-    return render(request, 'account/addRecipe.html')
+    return render(request, 'account/addRecipe.html' , {'web_title': web_title})
 
 
 @login_required(login_url='loginUser')
 def yourRecipe(request):
+    web_title = 'Your Recipe'
+
     user = request.user
     data = AddRecipe.objects.filter(user=user)
     # print(data)
     context = {
-        'data': data
+        'data': data,
+        'web_title' : web_title
     }
     return render(request, 'account/yourRecipe.html', context)
 
@@ -173,17 +186,27 @@ def delete_recipe(request , pk):
 @login_required(login_url='loginUser')
 def recipePage(request, pk):
 
+    web_title = 'Recipe'
+
     user = request.user
     data = AddRecipe.objects.filter(user=user, pk=pk)
 
 
     context = {
         'data': data,
+        'web_title' : web_title
     }
     return render(request, 'account/recipePage.html', context)
 
 
 def forgot_password(request):
+    web_title = 'Forgot Password'
+
+    # Check if the user is logged in
+    if request.user.is_authenticated:
+        # If the user is logged in, log them out
+        logoutUser(request)
+
     if request.method == 'POST':
         email = request.POST['email']
 
@@ -203,7 +226,7 @@ def forgot_password(request):
             messages.error(request, 'Account does not exist.')
             return redirect('forgot_password')
 
-    return render(request, 'account/forgot_password.html')
+    return render(request, 'account/forgot_password.html' , {'web_title': web_title})
 
 
 def reset_password_validate(request, uidb64, token):
@@ -224,6 +247,9 @@ def reset_password_validate(request, uidb64, token):
 
 
 def reset_password(request):
+
+    web_title = 'Reset Password'
+
     if request.method == 'POST':
         password = request.POST['password']
         confirm_password = request.POST['confirm_password']
@@ -239,4 +265,4 @@ def reset_password(request):
         else:
             messages.error(request, 'password does not match!')
             return redirect('reset_password')
-    return render(request, 'account/reset_password.html')
+    return render(request, 'account/reset_password.html' , {'web_title': web_title})

@@ -6,6 +6,7 @@
 }
 
 .notification{
+    margin-top: 25px;
     position: fixed;
     /* bottom: 100%; */
     right: 20px;
