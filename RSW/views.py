@@ -13,7 +13,8 @@ def home(request):
     data = AddRecipe.objects.all().order_by('-updated_at')
 
     context = {
-        'data' : data
+        'data' : data,
+        'web_title' : web_title
     }
     return render(request , 'home.html' , context)
 
