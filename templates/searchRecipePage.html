@@ -42,13 +42,15 @@
 
                     <!-- ingredients sections -->
                     <h3 class="fw-bold">Ingredients</h3>
-                    <ul style="margin-left: 20px;">
-                        {% for ingredient in ingredient_data %}
-                        <li>
-                            <p style="font-size: 15px;">{{ ingredient }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <div style="margin-top: 15px;">
+                        <ul>
+                            {% for ingredient in ingredient_data %}
+                            <li>
+                                <p style="font-size: 15px;">{{ ingredient }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
 
 
                     <!-- end ingretiant section -->
@@ -57,13 +59,15 @@
 
                     <!-- direction section -->
                     <h3 class="fw-bold">Directions</h3>
-                    <ul style="margin-left: 20px;">
-                        {% for step in step_data %}
-                        <li>
-                            <p style="font-size: 15px;">{{ step }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <div style=" margin-top: 15px;">
+                        <ul>
+                            {% for step in step_data %}
+                            <li>
+                                <p style="font-size: 15px;">{{ step }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                     <hr>
 
                     <div class="d-flex">

@@ -23,8 +23,12 @@ def homePageRecipe(request, pk):
         user = request.user
 
         data = AddRecipe.objects.get(pk=pk)
-        ingredient_data = [i.strip() for i in data.ingredients.split(',') if i.strip()]
-        step_data = [i.strip() for i in data.steps.split(',') if i.strip()]
+        ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
+        ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
+
+        step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+        step_data = [steps.replace('"', '') for steps in step_with_quotes]
+
 
         try:
             review = Review.objects.get(user=user, recipe=pk)
@@ -116,8 +120,11 @@ def srcRecipePage(request , pk):
         user = request.user
         data = AddRecipe.objects.get(pk=pk)
 
-        ingredient_data = [i.strip() for i in data.ingredients.split(',') if i.strip()]
-        step_data = [i.strip() for i in data.steps.split(',') if i.strip()]
+        ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
+        ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
+
+        step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+        step_data = [steps.replace('"', '') for steps in step_with_quotes]
 
         try:
             review = Review.objects.get(user=user , recipe=pk)

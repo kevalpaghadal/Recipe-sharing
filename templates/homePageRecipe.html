@@ -44,13 +44,15 @@
 
                     <!-- ingredients sections -->
                     <h3 class="fw-bold">Ingredients</h3>
-                    <ul style="margin-left: 20px;">
-                        {% for ingredient in ingredient_data %}
-                        <li>
-                            <p style="font-size: 15px;">{{ ingredient }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <div style="margin-top: 15px;">
+                        <ul>
+                            {% for ingredient in ingredient_data %}
+                            <li>
+                                <p style="font-size: 15px;">{{ ingredient }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
 
 
                     <!-- end ingretiant section -->
@@ -59,13 +61,15 @@
 
                     <!-- direction section -->
                     <h3 class="fw-bold">Directions</h3>
-                    <ul style="margin-left: 20px;">
-                        {% for step in step_data %}
-                        <li>
-                            <p style="font-size: 15px;">{{ step }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <div style=" margin-top: 15px;">
+                        <ul>
+                            {% for step in step_data %}
+                            <li>
+                                <p style="font-size: 15px;">{{ step }}</p>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                     <!-- end ingrediant section -->
                     <hr>
 
@@ -93,11 +97,16 @@
                             <div class="d-flex gap-3 mb-3">
                                 <a href="#" class="nav-link iconsize"><i class="fa-brands fa-instagram"></i></a>
 
-                                <a href="#" onclick="shareOnFacebook('{{ request.build_absolute_uri }}')" class="nav-link iconsize"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#" onclick="shareOnFacebook('{{ request.build_absolute_uri }}')"
+                                    class="nav-link iconsize"><i class="fa-brands fa-facebook"></i></a>
 
-                                <a href="#" onclick="shareOnWhatsApp('{{ request.build_absolute_uri }}', '{{ data.title }}')" class="nav-link iconsize"><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href="#"
+                                    onclick="shareOnWhatsApp('{{ request.build_absolute_uri }}', '{{ data.title }}')"
+                                    class="nav-link iconsize"><i class="fa-brands fa-whatsapp"></i></a>
 
-                                <a href="#"  onclick="shareOnTwitter('{{ request.build_absolute_uri }}', '{{ data.title }}')" class="nav-link iconsize"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"
+                                    onclick="shareOnTwitter('{{ request.build_absolute_uri }}', '{{ data.title }}')"
+                                    class="nav-link iconsize"><i class="fa-brands fa-twitter"></i></a>
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-2" style="margin-left: 140px;">
@@ -112,7 +121,7 @@
     </div>
 
     <h2 class="d-flex justify-content-center" style="margin-right: 650px;"><strong>Reviews</strong></h2>
-    
+
 
     {% if review %}
     <div class="card mx-auto rounded-0 mt-2" style="width: 48rem;">
@@ -124,28 +133,28 @@
             </div>
             <div class="mt-3 d-flex gap-2 align-items-center">
                 <p class="fs-4">
-                                {% if review.star == 1 %}
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                {% elif review.star == 2 %}
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    {% if review.star == 1 %}
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    {% elif review.star == 2 %}
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
 
-                                {% elif review.star == 3 %}
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                {% elif review.star == 4 %}
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                {% elif review.star == 5 %}
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
-                                {% endif %}
+                    {% elif review.star == 3 %}
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    {% elif review.star == 4 %}
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    {% elif review.star == 5 %}
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    <i class="fa-solid fa-star" style="color:#fbc225;"></i>
+                    {% endif %}
                 </p>
                 <p class="font_size">{{review.created_at |date:"d M Y"}}</p>
             </div>
@@ -202,7 +211,8 @@
                 <div class="row mt-3">
                     <div class="col" style="text-align: center;">
                         {% if not userFlag %}
-                        <button type="submit" class="btn btn-warning rounded-0"><a href="{% url 'loginUser' %}" class="nav-link text-dark">Login</a></button></a>
+                        <button type="submit" class="btn btn-warning rounded-0"><a href="{% url 'loginUser' %}"
+                                class="nav-link text-dark">Login</a></button></a>
                         {% else %}
                         <button type="submit" class="btn btn-warning rounded-0">Submit</button>
                         {% endif %}

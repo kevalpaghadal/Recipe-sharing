@@ -48,6 +48,7 @@ def registerUser(request):
     return render(request, 'account/registerUser.html', context)
 
 
+
 def activate(request, uidb64, token):
     # Activate the user by setting the is_active status to True
     try:
@@ -126,8 +127,8 @@ def userProfile(request):
 def addRecipe(request):
     web_title = 'Add Recipe'
 
-    ingredients = []
-    steps = []
+    ingredients = ''
+    steps = ''
 
     if request.method == 'POST' and request.FILES:
 
@@ -140,12 +141,12 @@ def addRecipe(request):
         # ingrediants input fileds loop
         ingrediant_ct = request.POST['js_inputCounter']
         for i in range(1, int(ingrediant_ct)):
-            ingredients.append(request.POST['ingre-'+str(i)])
+            ingredients += request.POST['ingre-' + str(i)] + ":::"
 
         # step input fileds loop
         step_ct = request.POST['js_inputCounter_step']
         for i in range(1, int(step_ct)):
-            steps.append(request.POST['step-'+str(i)])
+            steps += request.POST['step-' + str(i)] + ":::"
 
         prep_time = request.POST['prep_time']
         prep_time_unit = request.POST['prep_time_unit']
@@ -187,6 +188,13 @@ def delete_recipe(request , pk):
 def recipePage(request, pk):
 
     web_title = 'Recipe'
+    data = AddRecipe.objects.get(pk=pk)
+
+    ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
+    ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
+
+    step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+    step_data = [steps.replace('"', '') for steps in step_with_quotes]
 
     user = request.user
     data = AddRecipe.objects.filter(user=user, pk=pk)
@@ -194,7 +202,9 @@ def recipePage(request, pk):
 
     context = {
         'data': data,
-        'web_title' : web_title
+        'web_title' : web_title,
+        'ingredient_data': ingredient_data,
+        'step_data': step_data
     }
     return render(request, 'account/recipePage.html', context)
 

@@ -90,7 +90,7 @@ class AddRecipe(models.Model):
     title = models.TextField()
     description = models.TextField()
     photo = models.ImageField(upload_to='users/recipe_photos/' , null= True)
-    ingredients = models.TextField()
+    ingredients = models.TextField(blank=True , null=True)
     steps = models.TextField(blank=True , null=True)
     Servings = models.PositiveIntegerField(default=0, blank=True , null=True)
     meals = models.CharField(blank=True , null=True)
