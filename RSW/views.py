@@ -7,16 +7,25 @@ from django.contrib import messages
 
 
 
+from datetime import datetime, timedelta
+
 def home(request):
     web_title = 'home'
 
-    data = AddRecipe.objects.all().order_by('-updated_at')
+
+    # Calculate the date 3 days ago
+    latest = datetime.now() - timedelta(days=3)
+
+    # Retrieve latest uploaded recipes within the last 3 days
+    latest_recipes = AddRecipe.objects.filter(created_at__gte=latest).order_by('-created_at')
 
     context = {
-        'data' : data,
-        'web_title' : web_title
+        'web_title': web_title,
+        'latest_recipes': latest_recipes
     }
-    return render(request , 'home.html' , context)
+    return render(request, 'home.html', context)
+
+
 
 def homePageRecipe(request, pk):
     if request.user.is_authenticated:
@@ -28,7 +37,6 @@ def homePageRecipe(request, pk):
 
         step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
         step_data = [steps.replace('"', '') for steps in step_with_quotes]
-
 
         try:
             review = Review.objects.get(user=user, recipe=pk)
@@ -63,8 +71,11 @@ def homePageRecipe(request, pk):
             }
     else:
         data = AddRecipe.objects.get(pk=pk)
-        ingredient_data = [i.strip() for i in data.ingredients.split(',') if i.strip()]
-        step_data = [i.strip() for i in data.steps.split(',') if i.strip()]
+        ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
+        ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
+
+        step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+        step_data = [steps.replace('"', '') for steps in step_with_quotes]
         context = {
             'data': data,
             'userFlag': False,
@@ -77,42 +88,29 @@ def homePageRecipe(request, pk):
 
 
 def srcRecipe(request):
-    
     query = request.POST.get('search_recipe_id')
     search_type = request.POST.get('search_type')
-    print(search_type)
-    # print(query)
 
-    if query == None or query == "" and search_type == 'All Types':
-        fetch_recipe = AddRecipe.objects.all()
-    
-    elif search_type == 'Breakfast':
-        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
+    # Start with all recipes
+    fetch_recipe = AddRecipe.objects.all()
 
-    elif search_type == 'Main Course':
-        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
-
-    elif search_type == 'Side Dish':
-        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
-
-    elif search_type == 'Snacks':
-        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
-
-    elif search_type == 'Desserts':
-        fetch_recipe = AddRecipe.objects.filter(meals=search_type)
-
-    else:
-        fetch_recipe = AddRecipe.objects.filter(
+    if query:
+        # If there's a query, filter by title, meals, or ingredients
+        fetch_recipe = fetch_recipe.filter(
             Q(title__icontains=query) |
             Q(meals__icontains=query) |
-            Q(ingredients__icontains=query)) 
-        
+            Q(ingredients__icontains=query)
+        )
+
+    if search_type and search_type != 'All Types':
+        # If a specific type is selected, further filter by that type
+        fetch_recipe = fetch_recipe.filter(meals=search_type)
+
     context = {
-        'fetch_recipe' : fetch_recipe
+        'fetch_recipe': fetch_recipe
     }
 
-
-    return render(request, 'searchRecipe.html' , context)
+    return render(request, 'searchRecipe.html', context)
 
 def srcRecipePage(request , pk):
     if  request.user.is_authenticated:
@@ -159,8 +157,11 @@ def srcRecipePage(request , pk):
     else:
 
         data = AddRecipe.objects.get(pk=pk)
-        ingredient_data = [i.strip() for i in data.ingredients.split(',') if i.strip()]
-        step_data = [i.strip() for i in data.steps.split(',') if i.strip()]
+        ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
+        ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
+
+        step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+        step_data = [steps.replace('"', '') for steps in step_with_quotes]
     
         context = {
             'data':data,

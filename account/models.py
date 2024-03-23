@@ -89,7 +89,8 @@ class AddRecipe(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.TextField()
     description = models.TextField()
-    photo = models.ImageField(upload_to='users/recipe_photos/' , null= True)
+    photo = models.ImageField(upload_to='users/recipe_photos/' , null= True , max_length = 250)
+    video = models.FileField(upload_to='users/recipe_video/' , null= True , blank=True , max_length = 250)
     ingredients = models.TextField(blank=True , null=True)
     steps = models.TextField(blank=True , null=True)
     Servings = models.PositiveIntegerField(default=0, blank=True , null=True)
@@ -109,7 +110,7 @@ class AddRecipe(models.Model):
         return json.loads(self.ingredients)
 
 class Review(models.Model):
-    recipe = models.ForeignKey(AddRecipe, on_delete=models.SET_NULL, null=True)
+    recipe = models.ForeignKey(AddRecipe, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     review = models.TextField(max_length=1000,null=True, blank=True)
     star = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], blank=True, null=True)

@@ -27,7 +27,7 @@
                             </div>
 
                             <div class="col-md-12 mt-3">
-                                <p>Servings - {{recipe_data.Servings}} Person</p>
+                                <p><strong>Servings -</strong> {{recipe_data.Servings}} Person</p>
                             </div>
 
                         </div>
@@ -44,14 +44,10 @@
                     <!-- ingredients sections -->
                     <h3 class="fw-bold">Ingredients</h3>
 
-                    <div style="margin-top: 15px;">
-                        <ul>
-                            {% for ingredient in ingredient_data %}
-                            <li>
-                                <p style="font-size: 15px;">{{ ingredient }}</p>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                    <div style="margin-top: 15px; margin-left: 15px;">
+                        {% for ingredient in ingredient_data %}
+                        <p style="font-size: 15px;">{{ ingredient }}</p>
+                        {% endfor %}
                     </div>
 
 
@@ -62,14 +58,11 @@
                     <!-- direction section -->
                     <h3 class="fw-bold">Directions</h3>
 
-                    <div style=" margin-top: 15px;">
-                        <ul>
-                            {% for step in step_data %}
-                            <li>
-                                <p style="font-size: 15px;">{{ step }}</p>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                    <div style=" margin-top: 15px; margin-left: 15px;">
+                        {% for step in step_data %}
+                        <h6> <strong> step - {{forloop.counter}}</strong></h6>
+                        <p style="font-size: 15px;">{{ step }}</p>
+                        {% endfor %}
                     </div>
                     <!-- end ingrediant section -->
                     <hr>

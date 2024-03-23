@@ -13,13 +13,18 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = ()
 
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ('user_email', 'recipe_name', 'star', 'review', 'created_at', 'updated_at')
+    list_display = ('user_email', 'recipe_name', 'star', 'review', 'created_at')
 
     def user_email(self, obj):
         return obj.user.email
 
     def recipe_name(self, obj):
-        return obj.recipe.title
+        if obj.recipe:
+            return obj.recipe.title
+        else:
+            return "No Title"
+    
+    
 
 admin.site.register(User , CustomUserAdmin)
 

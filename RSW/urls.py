@@ -19,6 +19,9 @@ from django.urls import path , include
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+admin.site.site_header = "Recipe Sharing Administration"
+admin.site.site_title = "Recipe Sharing Administration"
+admin.site.index_title = "Welcome to Recipe Sharing"
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS

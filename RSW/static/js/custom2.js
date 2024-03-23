@@ -43,3 +43,4 @@ function shareOnTwitter(url, title) {
 function shareOnWhatsApp(url, title) {
     window.open('whatsapp://send?text=' + encodeURIComponent(title + ': ' + url), '_blank');
 }
+

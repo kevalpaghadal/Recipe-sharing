@@ -138,6 +138,11 @@ def addRecipe(request):
         title = request.POST['titel']
         description = request.POST['description']
         photo = request.FILES['recipe_photo']
+
+        if 'recipe_video' in request.FILES:
+            video = request.FILES['recipe_video']
+            Recipe_data = AddRecipe(video=video)
+            Recipe_data.save()
         # ingrediants input fileds loop
         ingrediant_ct = request.POST['js_inputCounter']
         for i in range(1, int(ingrediant_ct)):

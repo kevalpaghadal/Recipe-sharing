@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'embed_video',
     
     'account',
 ]
@@ -83,7 +84,7 @@ JET_SIDE_MENU_COMPACT = True
 JET_THEMES = [
     {
         'theme': 'default',  # or 'light-gray' or 'dark-gray'
-        'color': '#febf57',  # You can change this color
+        'color': 'black',  # You can change this color
         'title': 'Default'
     }
 ]

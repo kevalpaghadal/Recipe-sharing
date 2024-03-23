@@ -33,33 +33,33 @@
 
 <!-- card section -->
 <div class="container mt-4">
+    <h4 style="text-align: center; margin-bottom: 50px; font-size: 35px;">Latest Recipe <i class="fa-solid fa-arrow-right" style="color: #febf57;"></i></h4>
     <div class="d-flex flex-wrap justify-content-center gap-3">
-        {% for recipe_data in data %}
-        <div class="">
-            <div class="card" style="height: 490px; width: 350px;">
-                <div class="username d-flex border-bottom">
-                    <img src="{{recipe_data.user.profile_picture.url}}" alt="" class="userphoto ms-2 my-1 "
-                        style="height: 30px; width: 30px; border-radius: 50%;">
-                    <h6 class=" mt-2 ms-2">{{recipe_data.user.username}}</h6>
+        {% for recipe_data in latest_recipes %}
+            <div class="">
+                <div class="card" style="min-height: 470px; width: 350px;">
+                    <div class="username d-flex border-bottom">
+                        <img src="{{ recipe_data.user.profile_picture.url }}" alt="" class="userphoto ms-2 my-1"
+                            style="height: 30px; width: 30px; border-radius: 50%;">
+                        <h6 class="mt-2 ms-2">{{ recipe_data.user.username }}</h6>
+                    </div>
+                    <div class="zoom-img">
+                        <a href="{% url 'homePageRecipe' recipe_data.pk %}">
+                            <img src="{{ recipe_data.photo.url }}" alt="cardphoto1"
+                                style="height: 249px; width: 349px;">
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="{% url 'homePageRecipe' recipe_data.pk %}" class="nav-link">
+                            <h3 class="card-text">{{ recipe_data.title }}</h3>
+                        </a>
+                    </div>
                 </div>
-                <div class="zoom-img">
-                    <a href="{% url 'homePageRecipe' recipe_data.pk %}"><img src="{{recipe_data.photo.url}}"
-                            alt="cardphoto1" style="height: 249px; width: 349px;"></a>
-                </div>
-                <div class="card-body">
-                    <a href="{% url 'homePageRecipe' recipe_data.pk %}" class="nav-link">
-                        <h3 class="card-text">{{recipe_data.title}}</h3>
-                    </a>
-                </div>
-                <div class="card-body pt-0">
-                    <h6 class="card-text">⭐⭐⭐⭐⭐</h6>
-                </div>
-
             </div>
-        </div>
         {% endfor %}
     </div>
 </div>
+
 <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <!-- load alerts message -->
