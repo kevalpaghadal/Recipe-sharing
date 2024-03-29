@@ -1,3 +1,18 @@
+/* ------------------------------------------------------- */
+/* preloader design */
+#preloader{
+  background-color: #fff;
+  background-image: url(../images/gifs/1.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 15%;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+
+}
+
 /* navbar page */
 .transparent{
   background-color: transparent;
@@ -459,3 +474,72 @@ font-size: 25px;
 .font_size{
   font-size: 10px;
 }
+
+
+/* ---------------------------------------------- */
+/* our team design */
+.sub-section {
+  display: flex;
+  width: 280px;
+  height: 360px;
+  padding: 1.5rem;
+  background: white;
+  position: relative;
+  align-items: flex-end;
+  transition: 0.4s ease-out;
+}
+
+
+.sub-section:hover:before {
+  opacity: 1;
+}
+
+.sub-section:hover .namr-info {
+  opacity: 1;
+  transform: translateY(10px);
+}
+
+.sub-section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.485);
+  z-index: 2;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.sub-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+}
+
+.sub-section .namr-info{
+  position: relative;
+  z-index: 3;
+  color: white;
+  opacity: 1;
+  transform: translateY(30px);
+  transition: 0.5s;
+}
+
+.sub-section .namr-info h1 {
+  margin: 0px;
+}
+
+/* ------------------------------------------------------ */
+/* team page desing */
+
+
+
+

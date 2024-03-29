@@ -32,6 +32,10 @@ urlpatterns = [
     path('srcRecipe/' , views.srcRecipe , name='srcRecipe'),
     path('srcRecipePage/<int:pk>' , views.srcRecipePage , name='srcRecipePage'),
 
+    path('PrintRecipe/<int:pk>' , views.PrintRecipe , name='PrintRecipe'),
+
+
     path('contact_us', views.contact_us, name='contact_us'),
     path('about_us', views.about_us, name='about_us'),
+    path('team', views.team, name='team'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

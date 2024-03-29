@@ -1,9 +1,40 @@
 {% extends 'base.html'%}
-
+{% load static %}
 
 {% block content %}
+<h2 style="text-align: center; margin-top: 20px;"><b>Meet Our Team</b></h2>
+<hr style="width: 500px; margin-left: 515px; font-weight: bold;">
+<div class="container">
+    <div class="main-section d-flex justify-content-center gap-3">
+        <div class="sub-section">
+            <img src="{% static 'images/team_photo/pavan.jpg'%}" alt="">
+            <div class="name-info">
+                <h1 >Pavan</h1>
+            </div>
+        </div>
+    
+        <div class="sub-section">
+            <img src="{% static 'images/team_photo/keval.jpg'%}" alt="">
+            <div class="name-info">
+                <h1>Keval</h1>
+            </div>
+        </div>
+    
+        <div class="sub-section">
+            <img src="{% static 'images/team_photo/jaimin.jpg'%}" alt="">
+            <div class="name-info">
+                <h1>Jaimin</h1>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
 <h2 style="text-align: center; margin-top: 20px;"><b>About us</b></h2>
 <hr style="width: 500px; margin-left: 515px; font-weight: bold;">
-<p style="text-align: center; margin-top: 20px;">The main goal of our recipe sharing platform is to provide a platform for food enthusiasts to share their culinary creations and connect with others who share their passion for cooking.</p>
-<p style="text-align: center; margin-bottom: 499px;"> Here, users can share their recipes for various dishes, ranging from simple everyday meals to elaborate gourmet creations.</p>
+<p style="text-align: center; margin-top: 20px;">The main goal of our recipe sharing platform is to provide a platform
+    for food enthusiasts to share their culinary creations and connect with others who share their passion for cooking.
+</p>
+<p style="text-align: center;"> Here, users can share their recipes for various dishes, ranging from simple everyday
+    meals to elaborate gourmet creations.</p>
 {% endblock %}

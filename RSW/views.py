@@ -174,6 +174,13 @@ def srcRecipePage(request , pk):
 
 
 
+def PrintRecipe(request , pk):
+    data = AddRecipe.objects.all(pk=pk)
+    context = {
+        'data' : data
+    }
+    return render(request, 'PrintRecipePage.html' , context)
+
 
 
 def contact_us(request):
@@ -197,3 +204,7 @@ def about_us(request):
     web_title = 'About us'
 
     return render(request , 'about_us.html' , {'web_title' : web_title})
+
+def team(request):
+    web_title = 'Our team'
+    return render(request , 'team.html' ,{'web_title' : web_title})

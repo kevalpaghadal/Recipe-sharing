@@ -139,10 +139,8 @@ def addRecipe(request):
         description = request.POST['description']
         photo = request.FILES['recipe_photo']
 
-        if 'recipe_video' in request.FILES:
-            video = request.FILES['recipe_video']
-            Recipe_data = AddRecipe(video=video)
-            Recipe_data.save()
+        
+    
         # ingrediants input fileds loop
         ingrediant_ct = request.POST['js_inputCounter']
         for i in range(1, int(ingrediant_ct)):
@@ -160,6 +158,10 @@ def addRecipe(request):
 
 
         Recipe_data = AddRecipe(user=user, title=title, description=description, photo=photo,steps=steps, Servings=Servings, meals=meals, prep_time=prep_time, prep_time_unit=prep_time_unit)
+
+        if 'recipe_video' in request.FILES:
+            video = request.FILES['recipe_video']
+            Recipe_data.video = video
     
         Recipe_data.set_ingredients(ingredients)
 
