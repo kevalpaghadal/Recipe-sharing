@@ -1,0 +1,91 @@
+
+
+{% block content %}
+
+
+
+{% for data in recipe %}
+<div class="container-fluid p-0">
+    <div class="container py-4">
+        <div class="card mx-auto rounded-0" style="width: 48rem;">
+            <div class="card-body bg-light">
+                <div class="row">
+
+                    <!-- recipe titel and description -->
+                    <div class="col-md-6">
+
+                        <div class="row">
+                            <!-- recipe titel -->
+                            <div class="col-md-12">
+                                <h1 style="font-size: 22px;"><b>{{data.title}}</b></h1>
+                            </div>
+
+
+                            <!-- description -->
+                            <div class="col-md-12 mt-3">
+                                <p style="font-size: 12px;">{{data.description}}</p>
+                            </div>
+
+                            <div class="col-md-12 mt-3">
+                                <p style="font-size: 15px;"><strong>Servings -</strong> {{data.Servings}} Person</p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- photo -->
+                    <div class="col-md-6 ">
+                        <img src="{{data.photo.url}}" alt=""
+                            style="width: 270px; height: 280px; margin-bottom: 20px; margin-left: 70px; margin-top: 10px;">
+                    </div>
+                    <hr>
+
+                    <!-- ingredients sections -->
+                    <h3 class="fw-bold" style="font-size: 18px;">Ingredients</h3>
+                    <div style="margin-top: 15px; margin-left: 15px;">
+                        {% for ingredient in ingredient_data %}
+                        <p style="font-size: 15px;">{{ ingredient }}</p>
+                        {% endfor %}
+                    </div>
+
+
+                    <!-- end ingretiant section -->
+
+                    <hr>
+
+                    <!-- direction section -->
+                    <h3 class="fw-bold" style="font-size: 18px;">Directions</h3>
+                    <div style="margin-left: 15px;">
+                        {% for step in step_data %}
+                        <h6 style="font-size: 15px;"> <strong> step - {{forloop.counter}}</strong></h6>
+                        <p style="font-size: 15px;">{{ step }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <hr>
+                    
+                    <div style="display: flex;">
+                        <div>
+                            <h5 style="font-weight: bold; font-size: 18px;">Cook time</h5>
+                            <div style="display: flex;">
+                                <p>{{data.prep_time}} {{data.prep_time_unit}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <h5 style="font-weight: bold; font-size: 18px;"">Course</h5>
+                            <div style="display: flex;">
+                                <p>{{data.meals}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+{% endblock %}

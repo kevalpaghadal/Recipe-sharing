@@ -109,6 +109,7 @@ class AddRecipe(models.Model):
     def get_ingredients(self):
         return json.loads(self.ingredients)
 
+
 class Review(models.Model):
     recipe = models.ForeignKey(AddRecipe, on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

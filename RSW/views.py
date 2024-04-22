@@ -3,6 +3,8 @@ from account.models import AddRecipe , User , Review , ContactUs
 from django.db.models import Q
 from django.contrib import messages
 
+from django_xhtml2pdf.utils import pdf_decorator
+
 
 
 
@@ -173,11 +175,20 @@ def srcRecipePage(request , pk):
     return render(request , 'searchRecipePage.html' , context)
 
 
+@pdf_decorator(pdfname = 'recipe.pdf')
+def printRecipe(request ,pk):
+    recipe = AddRecipe.objects.filter(pk=pk)
+    data = AddRecipe.objects.get(pk=pk)
+    ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
+    ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
 
-def PrintRecipe(request , pk):
-    data = AddRecipe.objects.all(pk=pk)
+    step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+    step_data = [steps.replace('"', '') for steps in step_with_quotes]
+    
     context = {
-        'data' : data
+        'recipe' : recipe,
+        'ingredient_data': ingredient_data,
+        'step_data': step_data
     }
     return render(request, 'PrintRecipePage.html' , context)
 

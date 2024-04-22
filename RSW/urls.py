@@ -31,8 +31,8 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('srcRecipe/' , views.srcRecipe , name='srcRecipe'),
     path('srcRecipePage/<int:pk>' , views.srcRecipePage , name='srcRecipePage'),
-
-    path('PrintRecipe/<int:pk>' , views.PrintRecipe , name='PrintRecipe'),
+    path('printRecipe/<int:pk>' , views.printRecipe , name='printRecipe'),
+    # path('PrintRecipe/<int:pk>/' , views.PrintRecipe , name='PrintRecipe'),
 
 
     path('contact_us', views.contact_us, name='contact_us'),
