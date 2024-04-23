@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // social sharing logic
+function shareOnInstagram(url) {
+    var instagramUrl = 'https://www.instagram.com/keval__paghadal?url=' + encodeURIComponent(url);
+    window.open(instagramUrl, '_blank');
+}
+
 function shareOnFacebook(url) {
     window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
 }

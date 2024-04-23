@@ -11,6 +11,7 @@ urlpatterns = [
     path('recipePage/<int:pk>/', views.recipePage , name='recipePage'),
 
     path('delete_recipe/<int:pk>/', views.delete_recipe , name='delete_recipe'),
+    path('update_recipe/<int:pk>/', views.update_recipe , name='update_recipe'),
 
     path('activate/<uidb64>/<token>/' , views.activate , name='activate'),
 

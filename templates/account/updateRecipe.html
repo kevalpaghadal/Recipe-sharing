@@ -1,0 +1,171 @@
+{% extends 'base.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="container py-5">
+        <div class="card mx-auto rounded-0 bg-light" style="width: 35rem;">
+            <div class="card-body bg-light" style="border: 1px solid #89878883;">
+                <h2 class="my-2"><i class="fa-solid fa-plus"></i> Update Recipe</h2>
+                <p class="mb-4" style="font-size: 14px;">Uploading personal recipes is easy! Add yours to your
+                    favorites,
+                    share with friends, family, or the Allrecipes community</p>
+                <hr>
+                <form action="{% url 'update_recipe' recipe_instance.pk %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+
+                        <!-- recipe title and description -->
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <!-- recipe title -->
+                                <div class="col-md-12">
+                                    <label class="form-label mb-0">Recipe Title *</label>
+                                    <input type="text" name="title" id="title" value="{{recipe_instance.title}}"
+                                        class="form-control mb-4 rounded-0 border border-dark" />
+                                </div>
+
+                                <!-- description -->
+                                <div class="col-md-12">
+                                    <label class="form-label mb-0">Description *</label>
+                                    <textarea type="text" name="description" rows="6"
+                                        class="form-control rounded-0 border border-dark">{{recipe_instance.description}}</textarea>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- photo -->
+                        <div class="col-md-6 ">
+                            <label class="form-label mb-0">Photo</label>
+
+                            <div class="">
+                                <div class="">
+                                    <label for="upload-img" class="">
+                                        <img src="{% if recipe_instance.photo %}{{ recipe_instance.photo.url }}{% else %}{% static 'images/recipe-add-photo.png_433-hash'%}{% endif %}"
+                                            alt="Recipe Photo" class="imginputbox" id="input-img">
+                                    </label>
+                                    <input type="file" accept="image/jpeg,image/jpg,image/png" id="upload-img" class=""
+                                        name="recipe_photo" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+
+                    <!-- <div class="d-flex mt-3 gap-3">
+                        <label for=""> <strong> Recipe Video </strong>: (option)</label>
+                        <input type="file" name="recipe_video" value="{{recipe_instance.video.url}}">
+                    </div>
+                    <hr> -->
+
+
+
+
+
+                    <!-- Ingredients section -->
+                    <h6 class="fw-bold">Ingredients</h6>
+                    <p class="" style="color: rgba(0,0,0,.65); font-size: 14px;">
+                        Enter one ingredient per line. Include the quantity (i.e. cups, tablespoons) and any special
+                        preparation (i.e. sifted, softened, chopped). Use optional headers to organize the different
+                        parts of the
+                        recipe (i.e. Cake, Frosting, Dressing).
+                    </p>
+                    <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter ingredients below </p>
+
+                    {% for ingredient in ingredient_data %}
+                    <div class="inputfield" id="row">
+                        <input type="text" id="ingre-{{ forloop.counter }}" name="ingredients[]"
+                            value="{{ ingredient }}" class="form-control rounded-0 border border-dark input_field1"
+                            placeholder="Add Ingredients"/>
+                        <a href="" class="delete-row"><i class="fa-solid fa-xmark text-dark"></i></a>
+                    </div>
+                    {% endfor %}
+
+                    <hr>
+
+                    <!-- Directions section -->
+                    <h6 class="fw-bold">Directions</h6>
+                    <p style="color: rgba(0,0,0,.65); font-size: 14px;">Explain how to make your recipe, including oven
+                        temperatures, baking or cooking times, and pan sizes, etc.
+                        Use optional headers to organize the different parts of the recipe (i.e. Prep, Bake, Decorate).
+                    </p>
+                    <p style="color: rgba(0,0,0,.65); font-size: 12px;">Enter directions below </p>
+
+                    {% for step in step_data %}
+                    <div class="inputfield" id="row">
+                        <textarea type="text" id="step-{{ forloop.counter }}" name="step[]"
+                            class="form-control rounded-0 border border-dark input_field1"
+                            placeholder="Add Step">{{ step }}</textarea>
+                        <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
+                    </div>
+                    {% endfor %}
+
+
+                    <!-- end ingrediant section -->
+
+                    <hr>
+
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <label for="">
+                            <h6 class="fw-bold">Servings</h6>
+                        </label>
+                        <input id="" type="number" name="Servings" min="0" placeholder="0"
+                            value="{{recipe_instance.Servings}}"
+                            style="height: 40px; width: 60px; margin-left: 125px; padding: 10px;" required />
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <label for="">
+                            <h6 class="fw-bold">Meals</h6>
+                        </label>
+                        <select id="" name="meals" style="height: 40px; width: 200px; padding: 10px; margin-left: 145px;">
+                            <option value="Breakfast" {% if recipe_instance.meals == 'Breakfast' %}selected{% endif %}>Breakfast</option>
+                            <option value="Main Course" {% if recipe_instance.meals == 'Main Course' %}selected{% endif %}>Main Course</option>
+                            <option value="Side Dish" {% if recipe_instance.meals == 'Side Dish' %}selected{% endif %}>Side Dish</option>
+                            <option value="Snacks" {% if recipe_instance.meals == 'Snacks' %}selected{% endif %}>Snacks</option>
+                            <option value="Desserts" {% if recipe_instance.meals == 'Desserts' %}selected{% endif %}>Desserts</option>
+                        </select>
+                        
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <label for="">
+                            <h6 class="fw-bold">Prep time </h6>
+                        </label>
+                        <input id="" type="number" name="prep_time" min="0" placeholder="0"
+                            value="{{recipe_instance.prep_time}}"
+                            style="height: 40px; width: 60px; margin-left: 115px; padding: 10px;" required>
+
+                        <select id="" name="prep_time_unit" style="height: 40px; width: 200px; padding: 10px;" required>
+                            <option value="min" {% if recipe_instance.meals == 'min' %}selected{% endif %}>mins</option>
+                            <option value="hours" {% if recipe_instance.meals == 'hours' %}selected{% endif %}>hours</option>
+                        </select>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="reset" class=" btn text-danger rounded-0 fw-bold">CANCEL</button>
+
+                        <button type="submit" class="btn btn-danger rounded-0 fw-bold">
+                            Update Recipe</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!-- load alerts message -->
+            {% include 'includes/alerts.html'%}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

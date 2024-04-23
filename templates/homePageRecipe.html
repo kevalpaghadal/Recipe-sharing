@@ -28,7 +28,7 @@
                             </div>
 
                             <div class="col-md-12 mt-3">
-                                <p> <strong>Servings -</strong>  {{data.Servings}} Person</p>
+                                <p> <strong>Servings -</strong> {{data.Servings}} Person</p>
                             </div>
 
                         </div>
@@ -45,21 +45,21 @@
 
                     {% if data.video %}
                     <div class="mb-3 mt-1">
-                        <video width="100%" height="400" controls preload="auto" data-steup="{}" >
+                        <video width="100%" height="400" controls preload="auto" data-steup="{}">
                             <!-- Video sources -->
                             <source src="{{data.video.url}}" type="video/mp4">
-                          </video>
+                        </video>
                     </div>
                     <hr>
                     {% endif %}
-                    
+
 
                     <!-- ingredients sections -->
                     <h3 class="fw-bold">Ingredients</h3>
                     <div style="margin-top: 15px; margin-left: 15px;">
-                            {% for ingredient in ingredient_data %}
-                                <p style="font-size: 15px;">{{ ingredient }}</p>
-                            {% endfor %}
+                        {% for ingredient in ingredient_data %}
+                        <p style="font-size: 15px;">{{ ingredient }}</p>
+                        {% endfor %}
                     </div>
 
 
@@ -70,10 +70,10 @@
                     <!-- direction section -->
                     <h3 class="fw-bold">Directions</h3>
                     <div style=" margin-top: 15px; margin-left: 15px;">
-                            {% for step in step_data %}
-                            <h6> <strong> step - {{forloop.counter}}</strong></h6>
-                                <p style="font-size: 15px;">{{ step }}</p>
-                            {% endfor %}
+                        {% for step in step_data %}
+                        <h6> <strong> step - {{forloop.counter}}</strong></h6>
+                        <p style="font-size: 15px;">{{ step }}</p>
+                        {% endfor %}
                     </div>
                     <!-- end ingrediant section -->
                     <hr>
@@ -100,7 +100,9 @@
                         <div class="">
                             <h5 class="fw-bold">Share This Recipe:</h5>
                             <div class="d-flex gap-3 mb-3">
-                                <a href="#" class="nav-link iconsize"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" class="nav-link iconsize"
+                                    onclick="shareOnInstagram('{{ request.build_absolute_uri }}')"><i
+                                        class="fa-brands fa-instagram"></i></a>
 
                                 <a href="#" onclick="shareOnFacebook('{{ request.build_absolute_uri }}')"
                                     class="nav-link iconsize"><i class="fa-brands fa-facebook"></i></a>
@@ -116,7 +118,8 @@
                         </div>
                         <div class="d-flex align-items-center gap-2" style="margin-left: 140px;">
                             <a href="" class="buttons1" style="width: 200px;"><i class="fa-solid fa-heart"></i> SAVE</a>
-                            <a href="{% url 'printRecipe' data.pk %}" class="buttons1" style="width: 200px;"><i class="fa-solid fa-print"></i>
+                            <a href="{% url 'printRecipe' data.pk %}" class="buttons1" style="width: 200px;"><i
+                                    class="fa-solid fa-print"></i>
                                 PRINT</a>
                         </div>
                     </div>

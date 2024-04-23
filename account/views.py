@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from account.models import User, AddRecipe
-from .forms import UserForm , UserProfileForm
+from .forms import UserForm, UserProfileForm
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from .utils import send_verification_email
@@ -43,10 +43,9 @@ def registerUser(request):
         form = UserForm()
     context = {
         'form': form,
-        'web_title' : web_title
+        'web_title': web_title
     }
     return render(request, 'account/registerUser.html', context)
-
 
 
 def activate(request, uidb64, token):
@@ -86,14 +85,15 @@ def loginUser(request):
         else:
             messages.error(request, 'Invalid login')
             return redirect('loginUser')
-        
-    return render(request, 'account/loginUser.html' , {'web_title': web_title})
+
+    return render(request, 'account/loginUser.html', {'web_title': web_title})
 
 
 def logoutUser(request):
     auth.logout(request)
     messages.info(request, 'You are logged out.')
     return redirect('loginUser')
+
 
 @login_required(login_url='loginUser')
 def userProfile(request):
@@ -104,20 +104,22 @@ def userProfile(request):
         userform = UserProfileForm(request.POST, request.FILES, instance=user)
         if userform.is_valid():
             userform.save()
-            messages.success(request, 'Congratulations! Your profile has been updated.')
+            messages.success(
+                request, 'Congratulations! Your profile has been updated.')
             return redirect('userProfile')
         else:
             # Print form errors for debugging
             print(userform.errors)
-            messages.error(request, 'Invalid form data. Please correct the errors.')
+            messages.error(
+                request, 'Invalid form data. Please correct the errors.')
     else:
         userform = UserProfileForm(instance=user)
-    
+
     context = {
         'user': user,
         'userform': userform,
-        'web_title' : web_title
-        
+        'web_title': web_title
+
     }
 
     return render(request, 'account/userProfile.html', context)
@@ -139,8 +141,6 @@ def addRecipe(request):
         description = request.POST['description']
         photo = request.FILES['recipe_photo']
 
-        
-    
         # ingrediants input fileds loop
         ingrediant_ct = request.POST['js_inputCounter']
         for i in range(1, int(ingrediant_ct)):
@@ -156,20 +156,20 @@ def addRecipe(request):
         meals = request.POST['meals']
         Servings = request.POST['Servings']
 
-
-        Recipe_data = AddRecipe(user=user, title=title, description=description, photo=photo,steps=steps, Servings=Servings, meals=meals, prep_time=prep_time, prep_time_unit=prep_time_unit)
+        Recipe_data = AddRecipe(user=user, title=title, description=description, photo=photo, steps=steps,
+                                Servings=Servings, meals=meals, prep_time=prep_time, prep_time_unit=prep_time_unit)
 
         if 'recipe_video' in request.FILES:
             video = request.FILES['recipe_video']
             Recipe_data.video = video
-    
+
         Recipe_data.set_ingredients(ingredients)
 
         Recipe_data.save()
-        messages.success(request , 'Recipe Submited sucessfully')
+        messages.success(request, 'Recipe Submited sucessfully')
         return redirect('addRecipe')
 
-    return render(request, 'account/addRecipe.html' , {'web_title': web_title})
+    return render(request, 'account/addRecipe.html', {'web_title': web_title})
 
 
 @login_required(login_url='loginUser')
@@ -181,15 +181,87 @@ def yourRecipe(request):
     # print(data)
     context = {
         'data': data,
-        'web_title' : web_title
+        'web_title': web_title
     }
     return render(request, 'account/yourRecipe.html', context)
 
+
 @login_required(login_url='loginUser')
-def delete_recipe(request , pk):
-    recipe = get_object_or_404(AddRecipe , pk=pk)
+def delete_recipe(request, pk):
+    recipe = get_object_or_404(AddRecipe, pk=pk)
     recipe.delete()
     return redirect('yourRecipe')
+
+
+@login_required(login_url='loginUser')
+def update_recipe(request, pk):
+    # Retrieve the recipe instance
+    recipe_instance = get_object_or_404(AddRecipe, pk=pk)
+    # Retrieve the recipe object by its ID
+    data = AddRecipe.objects.get(pk=pk)
+
+    ingredient_with_quotes = [i.strip()
+                              for i in data.ingredients.split(':::') if i.strip()]
+    ingredient_data = [ingredient.replace(
+        '"', '') for ingredient in ingredient_with_quotes]
+
+    step_with_quotes = [i.strip()
+                        for i in data.steps.split(':::') if i.strip()]
+    step_data = [steps.replace('"', '') for steps in step_with_quotes]
+    # print(ingredient_data)
+
+    if request.method == 'POST':
+        # Extract data from the request
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        servings = request.POST.get('Servings')
+        meals = request.POST.get('meals')
+        prep_time = request.POST.get('prep_time')
+        prep_time_unit = request.POST.get('prep_time_unit')
+        # Use request.FILES.get() to avoid potential errors if file is not uploaded
+        photo = request.FILES.get('recipe_photo')
+        # Extract ingredients
+        ingredients = request.POST.getlist('ingredients[]')
+        # print(ingredients)
+
+        step = request.POST.getlist('step[]')
+        print(step)
+        # Extract steps
+
+        # Update the recipe instance with the extracted data
+        recipe_instance.title = title
+        recipe_instance.description = description
+        recipe_instance.Servings = servings
+        recipe_instance.meals = meals
+        recipe_instance.prep_time = prep_time
+        recipe_instance.prep_time_unit = prep_time_unit
+        if photo:  # Only update photo if a new one is uploaded
+            recipe_instance.photo = photo
+
+         # Join the ingredients into a single string with ':::' as separator
+        ingredients_str = ':::'.join(ingredients)
+        # Update the ingredients field
+        recipe_instance.ingredients = ingredients_str
+
+        step_str = ':::'.join(step)
+        recipe_instance.steps = step_str
+
+        # Save the updated recipe instance
+        recipe_instance.save()
+
+        # Display success message
+        messages.success(request, 'Recipe updated successfully')
+
+        # Redirect to a specific URL (change 'yourRecipe' to your desired URL name)
+        return redirect('yourRecipe')
+    else:
+        context = {
+            'recipe_instance': recipe_instance,
+            'ingredient_data': ingredient_data,
+            'step_data': step_data,
+        }
+        return render(request, 'account/updateRecipe.html', context)
+
 
 @login_required(login_url='loginUser')
 def recipePage(request, pk):
@@ -197,19 +269,21 @@ def recipePage(request, pk):
     web_title = 'Recipe'
     data = AddRecipe.objects.get(pk=pk)
 
-    ingredient_with_quotes = [i.strip() for i in data.ingredients.split(':::') if i.strip()]
-    ingredient_data = [ingredient.replace('"', '') for ingredient in ingredient_with_quotes]
+    ingredient_with_quotes = [i.strip()
+                              for i in data.ingredients.split(':::') if i.strip()]
+    ingredient_data = [ingredient.replace(
+        '"', '') for ingredient in ingredient_with_quotes]
 
-    step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
+    step_with_quotes = [i.strip()
+                        for i in data.steps.split(':::') if i.strip()]
     step_data = [steps.replace('"', '') for steps in step_with_quotes]
 
     user = request.user
     data = AddRecipe.objects.filter(user=user, pk=pk)
 
-
     context = {
         'data': data,
-        'web_title' : web_title,
+        'web_title': web_title,
         'ingredient_data': ingredient_data,
         'step_data': step_data
     }
@@ -243,7 +317,7 @@ def forgot_password(request):
             messages.error(request, 'Account does not exist.')
             return redirect('forgot_password')
 
-    return render(request, 'account/forgot_password.html' , {'web_title': web_title})
+    return render(request, 'account/forgot_password.html', {'web_title': web_title})
 
 
 def reset_password_validate(request, uidb64, token):
@@ -282,4 +356,4 @@ def reset_password(request):
         else:
             messages.error(request, 'password does not match!')
             return redirect('reset_password')
-    return render(request, 'account/reset_password.html' , {'web_title': web_title})
+    return render(request, 'account/reset_password.html', {'web_title': web_title})
