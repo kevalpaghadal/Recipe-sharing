@@ -4,18 +4,66 @@
 
 {% block content %}
 
-<div class="container">
-    <form action="">
-        
-        <input type="checkbox" name="mels" />
-        <label for="">potato</label>
+<div class="container mt-5">
+    <form action="" method="POST">
+        {% csrf_token %}
 
-        <input type="checkbox" name="mels" />
-        <label for="">potato</label>
-        
+        <div class="mb-3">
+            <div class="text-end mb-3">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+
+            <div class="">
+                <div class="form-check mx-3">
+                    <input type="checkbox" id="meal1" name="meals" value="recipe">
+                    <label for="meal1">Recipe</label>
+                </div>
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal2" name="meals" value="besan">
+                    <label class="form-check-label" for="meal2">Besan</label>
+                </div>
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal3" name="meals" value="Mango">
+                    <label class="form-check-label" for="meal3">Mango</label>
+                </div>
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal4" name="meals" value="ginger">
+                    <label class="form-check-label" for="meal4">Ginger</label>
+                </div>
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal5" name="meals" value="Lassi">
+                    <label class="form-check-label" for="meal5">Lassi</label>
+                </div>
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal6" name="meals" value="Rice">
+                    <label class="form-check-label" for="meal6">Rice</label>
+                </div>
+
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal7" name="meals" value="Wheat flour (Atta)">
+                    <label class="form-check-label" for="meal7">Wheat flour (Atta)</label>
+                </div>
+
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal8" name="meals" value="Lentils (Dal)">
+                    <label class="form-check-label" for="meal8">Lentils (Dal)</label>
+                </div>
+
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal9" name="meals" value="Chickpeas (Chana)">
+                    <label class="form-check-label" for="meal9">Chickpeas (Chana)</label>
+                </div>
+
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" id="meal9" name="meals" value="Chickpeas (Chana)">
+                    <label class="form-check-label" for="meal9">Chickpeas (Chana)</label>
+                </div>
+
+                
+            </div>
+        </div>
     </form>
 </div>
-
 
 
 <div class="row">

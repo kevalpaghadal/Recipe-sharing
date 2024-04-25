@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User , AddRecipe , Review , ContactUs
+from .models import User , AddRecipe , Review , ContactUs , Save
 from django.contrib.auth.admin import UserAdmin
 
 
@@ -99,6 +99,7 @@ admin.site.register(User , CustomUserAdmin)
 
 admin.site.register(AddRecipe)
 
+admin.site.register(Save)
 
 admin.site.register(Review , ReviewAdmin)
 

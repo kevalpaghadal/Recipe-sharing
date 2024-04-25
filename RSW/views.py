@@ -114,10 +114,36 @@ def srcRecipe(request):
 
     return render(request, 'searchRecipe.html', context)
 
-def formSearch(request):
 
+
+def formSearch(request):
+    # Get the selected checkboxes from the form
+    if request.method == 'POST':
+        selected_meals = request.POST.getlist('meals')
+        print(selected_meals)
+        
+        # Start with all recipes
+        fetch_recipe = AddRecipe.objects.all()
+
+        if selected_meals:
+            # Start with an empty query
+            query = Q()
+            # Iterate over selected meals to build the query
+            for meal in selected_meals:
+                query |= Q(title__icontains=meal) | Q(description__icontains=meal) | Q(ingredients__icontains=meal)
+            
+            # Apply the combined query to filter recipes
+            fetch_recipe = fetch_recipe.filter(query)
+            print(fetch_recipe)
+
+            return redirect('showFormRecipe')
+
+    else:
+        pass
 
     return render(request, 'formSearch.html')
+
+
 
 def srcRecipePage(request , pk):
     if  request.user.is_authenticated:

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from account.models import User, AddRecipe
+from account.models import User, AddRecipe , Save
 from .forms import UserForm, UserProfileForm
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
@@ -173,6 +173,30 @@ def addRecipe(request):
 
 
 @login_required(login_url='loginUser')
+def save(request, pk):
+    # Get the recipe object based on the primary key (pk)
+    user = request.user
+    # print(user)
+    recipe = AddRecipe.objects.get(pk=pk)
+    # Create an instance of the Save model
+    
+    saved_recipe = Save.objects.create(recipe=recipe, user=user)
+    
+    if recipe:
+        print("ok")
+    else:
+        print("not ok")
+
+
+
+    # print(saved_recipe)
+    # Optionally, you can add some messages or additional logic here
+    
+    # Redirect the user to a specific page, for example, the home page
+    return redirect('/')
+
+
+@login_required(login_url='loginUser')
 def yourRecipe(request):
     web_title = 'Your Recipe'
 
@@ -191,6 +215,7 @@ def delete_recipe(request, pk):
     recipe = get_object_or_404(AddRecipe, pk=pk)
     recipe.delete()
     return redirect('yourRecipe')
+
 
 
 @login_required(login_url='loginUser')
