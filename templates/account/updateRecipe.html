@@ -25,14 +25,14 @@
                                 <div class="col-md-12">
                                     <label class="form-label mb-0">Recipe Title *</label>
                                     <input type="text" name="title" id="title" value="{{recipe_instance.title}}"
-                                        class="form-control mb-4 rounded-0 border border-dark" />
+                                        class="form-control mb-4 rounded-0 border border-dark" required/>
                                 </div>
 
                                 <!-- description -->
                                 <div class="col-md-12">
                                     <label class="form-label mb-0">Description *</label>
                                     <textarea type="text" name="description" rows="6"
-                                        class="form-control rounded-0 border border-dark">{{recipe_instance.description}}</textarea>
+                                        class="form-control rounded-0 border border-dark" required>{{recipe_instance.description}}</textarea>
                                 </div>
                             </div>
 
@@ -57,13 +57,7 @@
                     </div>
                     <hr>
 
-                    <!-- <div class="d-flex mt-3 gap-3">
-                        <label for=""> <strong> Recipe Video </strong>: (option)</label>
-                        <input type="file" name="recipe_video" value="{{recipe_instance.video.url}}">
-                    </div>
-                    <hr> -->
-
-
+                    
 
 
 
@@ -82,9 +76,18 @@
                         <input type="text" id="ingre-{{ forloop.counter }}" name="ingredients[]"
                             value="{{ ingredient }}" class="form-control rounded-0 border border-dark input_field1"
                             placeholder="Add Ingredients"/>
-                        <a href="" class="delete-row"><i class="fa-solid fa-xmark text-dark"></i></a>
+                            <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
+
                     </div>
                     {% endfor %}
+                    <div id="newinput"></div>
+                    <input type="hidden" name="js_inputCounter" id="js_inputCounter" value="2" />
+                    <div class="">
+                      <button id="rowAdder" type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i
+                          class="fa-solid fa-plus"></i>
+                        ADD
+                        INGREDIANTS</button>
+                    </div>
 
                     <hr>
 
@@ -101,9 +104,18 @@
                         <textarea type="text" id="step-{{ forloop.counter }}" name="step[]"
                             class="form-control rounded-0 border border-dark input_field1"
                             placeholder="Add Step">{{ step }}</textarea>
-                        <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
+                            <a href="" id="DeleteRow"><i class="fa-solid fa-xmark text-dark"></i></a>
+
                     </div>
                     {% endfor %}
+                    <div id="newinputstep"></div>
+          <input type="hidden" name="js_inputCounter_step" id="js_inputCounter_step" value="2" required />
+          <div class="">
+            <button id="textareaAdder" type="button" class="btn btn-outline-danger rounded-0 fw-bold"><i
+                class="fa-solid fa-plus"></i>
+              ADD
+              STEP</button>
+          </div>
 
 
                     <!-- end ingrediant section -->
@@ -150,7 +162,7 @@
                     <hr>
 
                     <div class="d-flex justify-content-end gap-2">
-                        <button type="reset" class=" btn text-danger rounded-0 fw-bold">CANCEL</button>
+                        <button class=" btn text-danger rounded-0 fw-bold">CANCEL</button>
 
                         <button type="submit" class="btn btn-danger rounded-0 fw-bold">
                             Update Recipe</button>

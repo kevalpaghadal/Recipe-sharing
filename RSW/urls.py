@@ -30,6 +30,7 @@ urlpatterns = [
     path('homePageRecipe/<int:pk>/' , views.homePageRecipe, name='homePageRecipe'),
     path('account/', include('account.urls')),
     path('srcRecipe/' , views.srcRecipe , name='srcRecipe'),
+    path('formSearch/' , views.formSearch , name='formSearch'),
     path('srcRecipePage/<int:pk>' , views.srcRecipePage , name='srcRecipePage'),
     path('printRecipe/<int:pk>' , views.printRecipe , name='printRecipe'),
     # path('PrintRecipe/<int:pk>/' , views.PrintRecipe , name='PrintRecipe'),

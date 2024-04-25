@@ -101,7 +101,7 @@ def srcRecipe(request):
         fetch_recipe = fetch_recipe.filter(
             Q(title__icontains=query) |
             Q(meals__icontains=query) |
-            Q(ingredients__icontains=query)
+            Q(ingredients__icontains=query) 
         )
 
     if search_type and search_type != 'All Types':
@@ -113,6 +113,11 @@ def srcRecipe(request):
     }
 
     return render(request, 'searchRecipe.html', context)
+
+def formSearch(request):
+
+
+    return render(request, 'formSearch.html')
 
 def srcRecipePage(request , pk):
     if  request.user.is_authenticated:

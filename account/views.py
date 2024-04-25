@@ -250,7 +250,7 @@ def update_recipe(request, pk):
         recipe_instance.save()
 
         # Display success message
-        messages.success(request, 'Recipe updated successfully')
+        # messages.success(request, 'Recipe updated successfully')
 
         # Redirect to a specific URL (change 'yourRecipe' to your desired URL name)
         return redirect('yourRecipe')
