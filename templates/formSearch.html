@@ -4,66 +4,58 @@
 
 {% block content %}
 
-<div class="container mt-5">
-    <form action="" method="POST">
-        {% csrf_token %}
-
-        <div class="mb-3">
-            <div class="text-end mb-3">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-
-            <div class="">
-                <div class="form-check mx-3">
-                    <input type="checkbox" id="meal1" name="meals" value="recipe">
-                    <label for="meal1">Recipe</label>
-                </div>
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal2" name="meals" value="besan">
-                    <label class="form-check-label" for="meal2">Besan</label>
-                </div>
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal3" name="meals" value="Mango">
-                    <label class="form-check-label" for="meal3">Mango</label>
-                </div>
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal4" name="meals" value="ginger">
-                    <label class="form-check-label" for="meal4">Ginger</label>
-                </div>
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal5" name="meals" value="Lassi">
-                    <label class="form-check-label" for="meal5">Lassi</label>
-                </div>
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal6" name="meals" value="Rice">
-                    <label class="form-check-label" for="meal6">Rice</label>
-                </div>
-
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal7" name="meals" value="Wheat flour (Atta)">
-                    <label class="form-check-label" for="meal7">Wheat flour (Atta)</label>
-                </div>
-
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal8" name="meals" value="Lentils (Dal)">
-                    <label class="form-check-label" for="meal8">Lentils (Dal)</label>
-                </div>
-
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal9" name="meals" value="Chickpeas (Chana)">
-                    <label class="form-check-label" for="meal9">Chickpeas (Chana)</label>
-                </div>
-
-                <div class="form-check mx-3">
-                    <input class="form-check-input" type="checkbox" id="meal9" name="meals" value="Chickpeas (Chana)">
-                    <label class="form-check-label" for="meal9">Chickpeas (Chana)</label>
-                </div>
-
-                
-            </div>
-        </div>
-    </form>
+<form class="form1" action="" method="post">
+    
+    <h3 style="margin-left: 20px;">Grains and Pulses:</h3>
+    <div class="lt1">
+    <input class="deep" type="checkbox" name="meals" id="meal1" value="recipe">
+    <label class="labal1" for="meal1">Recipe</label>
+    <input type="checkbox" name="meals" id="meal2" value="recipe">
+    <label class="labal1" for="meal2">Recipe</label>
+    <input type="checkbox" name="meals" id="meal3" value="recipe">
+    <label class="labal1" for="meal3">Recipe</label>
+    <input type="checkbox" name="meals" id="meal4" value="recipe">
+    <label class="labal1" for="meal4">Recipe</label>
+    <input type="checkbox" name="meals" id="meal5" value="recipe">
+    <label class="labal1" for="meal5">Recipe</label><br>
+    <input type="checkbox" name="meals" id="meal6" value="recipe">
+    <label class="labal1" for="meal6">Recipe</label>
 </div>
+
+<h1 style="margin-left: 20px;">checkbox2</h1>
+<div class="lt1">
+    
+    <input type="checkbox" name="meals" id="meal7" value="recipe">
+    <label class="labal1" for="meal7">Recipe</label>
+    <input type="checkbox" name="meals" id="meal8" value="recipe">
+    <label class="labal1" for="meal8">Recipe</label>
+    <input type="checkbox" name="meals" id="meal9" value="recipe">
+    <label class="labal1" for="meal9">Recipe</label>
+    <input type="checkbox" name="meals" id="meal10" value="recipe">
+    <label class="labal1" for="meal10">Recipe</label>
+    <input type="checkbox" name="meals" id="meal11" value="recipe">
+    <label class="labal1" for="meal5">Recipe</label><br>
+    <input type="checkbox" name="meals" id="meal12" value="recipe">
+    <label class="labal1" for="meal5">Recipe</label>
+</div>
+
+<h1 style="margin-left: 20px;">checkbox3</h1>
+<div class="lt1">
+    <input class="deep" type="checkbox" name="meals" id="meal13" value="recipe">
+    <label class="labal1" for="meal13">Recipe</label>
+    <input type="checkbox" name="meals" id="meal14" value="recipe">
+    <label class="labal1" for="meal14">Recipe</label>
+    <input type="checkbox" name="meals" id="meal15" value="recipe">
+    <label class="labal1" for="meal15">Recipe</label>
+    <input type="checkbox" name="meals" id="meal16" value="recipe">
+    <label class="labal1" for="meal16">Recipe</label>
+    <input type="checkbox" name="meals" id="meal17" value="recipe">
+    <label class="labal1" for="meal17">Recipe</label><br>
+    <input type="checkbox" name="meals" id="meal18" value="recipe">
+    <label class="labal1" for="meal18">Recipe</label>
+</div>
+<button type="submit" class="w-100 pt-1 pb-1">search</button>
+</form>
 
 
 <div class="row">

@@ -10,6 +10,7 @@ from django.contrib.auth.tokens import default_token_generator
 
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 
 # Create your views here.
@@ -124,6 +125,14 @@ def userProfile(request):
 
     return render(request, 'account/userProfile.html', context)
 
+@login_required(login_url='loginUser')
+def collection(request):
+    user = request.user
+    data = Save.objects.filter(user=user)
+    context = {
+        'fetch_recipe' : data
+    }
+    return render(request , 'account/collection.html', context)
 
 @login_required(login_url='loginUser')
 def addRecipe(request):
@@ -173,30 +182,6 @@ def addRecipe(request):
 
 
 @login_required(login_url='loginUser')
-def save(request, pk):
-    # Get the recipe object based on the primary key (pk)
-    user = request.user
-    # print(user)
-    recipe = AddRecipe.objects.get(pk=pk)
-    # Create an instance of the Save model
-    
-    saved_recipe = Save.objects.create(recipe=recipe, user=user)
-    
-    if recipe:
-        print("ok")
-    else:
-        print("not ok")
-
-
-
-    # print(saved_recipe)
-    # Optionally, you can add some messages or additional logic here
-    
-    # Redirect the user to a specific page, for example, the home page
-    return redirect('/')
-
-
-@login_required(login_url='loginUser')
 def yourRecipe(request):
     web_title = 'Your Recipe'
 
@@ -208,6 +193,34 @@ def yourRecipe(request):
         'web_title': web_title
     }
     return render(request, 'account/yourRecipe.html', context)
+
+
+@login_required(login_url='loginUser')
+def save(request):
+    # Get the recipe object based on the primary key (pk)
+    user = request.user
+    recipe_id = request.GET.get('value')
+    # Create an instance of the Save model  
+    recipe = get_object_or_404(AddRecipe, pk=recipe_id)
+    # print(recipe)
+
+    saved_recipe = Save.objects.create(recipe=recipe, user=user)
+   
+    return redirect('collection')
+
+@login_required(login_url='loginUser')
+def unsave(request):
+    # Get the recipe object based on the primary key (pk)
+    user = request.user
+    recipe_id = request.GET.get('value')
+    # Create an instance of the Save model  
+    recipe = get_object_or_404(AddRecipe, pk=recipe_id)
+    # print(recipe)
+
+    Save.objects.filter(recipe=recipe, user=user).delete()
+   
+    return redirect('collection')
+
 
 
 @login_required(login_url='loginUser')

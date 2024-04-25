@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User , AddRecipe , Review , ContactUs , Save
+from .models import User , AddRecipe , Review , ContactUs, Save
 from django.contrib.auth.admin import UserAdmin
 
 

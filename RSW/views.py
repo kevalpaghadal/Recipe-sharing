@@ -1,5 +1,5 @@
 from django.shortcuts import redirect , render
-from account.models import AddRecipe , User , Review , ContactUs
+from account.models import AddRecipe , User , Review , ContactUs , Save
 from django.db.models import Q
 from django.contrib import messages
 
@@ -39,17 +39,19 @@ def homePageRecipe(request, pk):
 
         step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
         step_data = [steps.replace('"', '') for steps in step_with_quotes]
-
+        check = Save.objects.filter(recipe=pk)
         try:
             review = Review.objects.get(user=user, recipe=pk)
+            
 
             context = {
+                'check' : check,
                 'data': data,
                 'userFlag': True,
                 'review': review,
                 'request': request,
                 'ingredient_data': ingredient_data,
-                'step_data': step_data
+                'step_data': step_data,
             }
         except Review.DoesNotExist:
             review = None
@@ -65,6 +67,7 @@ def homePageRecipe(request, pk):
                 return redirect('homePageRecipe', pk=pk)
 
             context = {
+                'check' : check,
                 'data': data,
                 'userFlag': True,
                 'request': request,
@@ -78,7 +81,10 @@ def homePageRecipe(request, pk):
 
         step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
         step_data = [steps.replace('"', '') for steps in step_with_quotes]
+        check = Save.objects.filter(recipe=pk)
+        print(check)
         context = {
+            'check' : check,
             'data': data,
             'userFlag': False,
             'request': request,
@@ -156,12 +162,13 @@ def srcRecipePage(request , pk):
 
         step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
         step_data = [steps.replace('"', '') for steps in step_with_quotes]
-
+        check = Save.objects.filter(recipe=pk)
         try:
             review = Review.objects.get(user=user , recipe=pk)
 
 
             context = {
+                'check' : check,
                 'data' : data,
                 'userFlag' : True,
                 'review' : review,
@@ -179,6 +186,7 @@ def srcRecipePage(request , pk):
                 recipe_rating.save()        
 
             context = {
+                'check' : check,
                 'data' : data,
                 'userFlag' : True,
                 'request': request,
@@ -197,6 +205,7 @@ def srcRecipePage(request , pk):
         step_data = [steps.replace('"', '') for steps in step_with_quotes]
     
         context = {
+            'check' : check,
             'data':data,
             'userFlag' : False,
             'request': request,
@@ -215,8 +224,11 @@ def printRecipe(request ,pk):
 
     step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
     step_data = [steps.replace('"', '') for steps in step_with_quotes]
+    check = Save.objects.filter(recipe=pk)
+ 
     
     context = {
+        'check' : check,
         'recipe' : recipe,
         'ingredient_data': ingredient_data,
         'step_data': step_data

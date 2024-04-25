@@ -117,13 +117,11 @@
                             </div>
                         </div>
                         <div class="d-flex align-items-center gap-2" style="margin-left: 140px;">
-                            {% if saved_recipe %}
-                            <!-- Option to unsave the recipe -->
-                            <a href="{% url 'save' data.pk %}" class="buttons1" style="width: 200px;"><i class="fa-solid fa-heart"></i> UNSAVE</a>
-                            
+
+                            {% if  check %}
+                            <a href="{%url 'unsave'%}?value={{ data.pk }}"  class="buttons1" style="width: 200px;"> UNSAVE</a>
                             {% else %}
-                            <!-- Option to save the recipe -->
-                            <a href="{% url 'save' data.pk %}" class="buttons1" style="width: 200px;"><i class="fa-solid fa-heart"></i> SAVE</a>
+                            <a href="{%url 'save'%}?value={{ data.pk }}"  class="buttons1" style="width: 200px;"><i class="fa-solid fa-heart"></i> SAVE</a>
                             {% endif %}
 
                             <a href="{% url 'printRecipe' data.pk %}" class="buttons1" style="width: 200px;"><i

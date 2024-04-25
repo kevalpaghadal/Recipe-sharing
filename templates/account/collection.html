@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if fetch_recipe %}
+<div class="container-fluid d-flex justify-content-center gap-3 flex-wrap mt-5">
+    {% for f_recipe in fetch_recipe %}
+    <div class="card" style="max-width: 240px; min-height: 300px;">
+        <div class="">
+            <div class="">
+                <a href="{% url 'homePageRecipe' f_recipe.recipe.pk %}" class="nav-link"><img src="{{f_recipe.recipe.photo.url}}"
+                        style="width: 238px; height: 260px; border-radius: 5px; "
+                        alt="Recipe Photo"></a>
+            </div>
+            <div class="">
+
+                <div class="card-body">
+                    <a href="{% url 'homePageRecipe' f_recipe.recipe.pk %}" class="nav-link">
+                        <h5 class="card-title"><u>{{f_recipe.recipe.title}}</u></h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div style="height: 600px;">
+<h2 class="d-flex justify-content-center mt-3">0 results  for save .</h2>
+
+</div>
+
+{% endif %}
+
+
+
+{% endblock %}

@@ -132,6 +132,9 @@ class ContactUs(models.Model):
 class Save(models.Model):
     recipe = models.ForeignKey(AddRecipe , on_delete=models.CASCADE, null=True)
     user = models.ForeignKey(User , on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
     def __str__(self):
         return f'Saved recipe: {self.recipe.title} by {self.user.username}'
