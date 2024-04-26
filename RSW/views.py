@@ -140,15 +140,16 @@ def formSearch(request):
             
             # Apply the combined query to filter recipes
             fetch_recipe = fetch_recipe.filter(query)
-            print(fetch_recipe)
 
-            return redirect('showFormRecipe')
-
-    else:
-        pass
+            context = {
+                'fetch_recipe' : fetch_recipe
+            }
+            return render(request , 'showFormRecipe.html', context)
 
     return render(request, 'formSearch.html')
 
+def ShowFormRecipe(request):
+    return render(request , 'ShowFormRecipe.html')
 
 
 def srcRecipePage(request , pk):

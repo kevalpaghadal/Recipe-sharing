@@ -32,7 +32,7 @@ urlpatterns = [
     path('srcRecipe/' , views.srcRecipe , name='srcRecipe'),
     path('srcRecipePage/<int:pk>' , views.srcRecipePage , name='srcRecipePage'),
     path('formSearch/' , views.formSearch , name='formSearch'),
-    # path('ShowFormRecipe/' , views.ShowFormRecipe , name='ShowFormRecipe'),
+    path('ShowFormRecipe/' , views.ShowFormRecipe , name='ShowFormRecipe'),
     path('printRecipe/<int:pk>' , views.printRecipe , name='printRecipe'),
 
 

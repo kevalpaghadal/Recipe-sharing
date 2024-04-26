@@ -4,57 +4,116 @@
 
 {% block content %}
 
-<form class="form1" action="" method="post">
+<form class="form1" action="{% url 'formSearch' %}" method="POST">
+    {% csrf_token %}
     
-    <h3 style="margin-left: 20px;">Grains and Pulses:</h3>
+    <h3 style="margin-left: 20px; margin-top: 20px;">Grains and Pulses:</h3>
     <div class="lt1">
-    <input class="deep" type="checkbox" name="meals" id="meal1" value="recipe">
-    <label class="labal1" for="meal1">Recipe</label>
-    <input type="checkbox" name="meals" id="meal2" value="recipe">
-    <label class="labal1" for="meal2">Recipe</label>
-    <input type="checkbox" name="meals" id="meal3" value="recipe">
-    <label class="labal1" for="meal3">Recipe</label>
-    <input type="checkbox" name="meals" id="meal4" value="recipe">
-    <label class="labal1" for="meal4">Recipe</label>
-    <input type="checkbox" name="meals" id="meal5" value="recipe">
-    <label class="labal1" for="meal5">Recipe</label><br>
-    <input type="checkbox" name="meals" id="meal6" value="recipe">
-    <label class="labal1" for="meal6">Recipe</label>
+    <input class="deep" type="checkbox" name="meals" id="meal1" value="Rice">
+    <label class="labal1" for="meal1">Rice</label>
+    <input type="checkbox" name="meals" id="meal2" value="Wheat flour (Atta)">
+    <label class="labal1" for="meal2">Wheat flour (Atta)</label>
+    <input type="checkbox" name="meals" id="meal3" value="Lentils (Dal)">
+    <label class="labal1" for="meal3">Lentils (Dal)</label>
+    <input type="checkbox" name="meals" id="meal4" value="Chickpeas (Chana)">
+    <label class="labal1" for="meal4">Chickpeas (Chana)</label>
+    <input type="checkbox" name="meals" id="meal5" value="Green gram (Moong dal)">
+    <label class="labal1" for="meal5">Green gram (Moong dal)</label><br>
+    <input type="checkbox" name="meals" id="meal6" value="Red kidney beans (Rajma)">
+    <label class="labal1" for="meal6">Red kidney beans (Rajma)</label>
+    <input type="checkbox" name="meals" id="meal7" value="Split pigeon peas (Toor dal)">
+    <label class="labal1" for="meal7">Split pigeon peas (Toor dal)</label>
+    <input type="checkbox" name="meals" id="meal8" value="Basmati rice">
+    <label class="labal1" for="meal8">Basmati rice</label>
+    <input type="checkbox" name="meals" id="meal9" value="Barley">
+    <label class="labal1" for="meal9">Barley</label>
 </div>
-
-<h1 style="margin-left: 20px;">checkbox2</h1>
+<br>
+<h3 style="margin-left: 20px;">Cooking Essentials:</h3>
 <div class="lt1">
     
-    <input type="checkbox" name="meals" id="meal7" value="recipe">
-    <label class="labal1" for="meal7">Recipe</label>
-    <input type="checkbox" name="meals" id="meal8" value="recipe">
-    <label class="labal1" for="meal8">Recipe</label>
-    <input type="checkbox" name="meals" id="meal9" value="recipe">
-    <label class="labal1" for="meal9">Recipe</label>
-    <input type="checkbox" name="meals" id="meal10" value="recipe">
-    <label class="labal1" for="meal10">Recipe</label>
-    <input type="checkbox" name="meals" id="meal11" value="recipe">
-    <label class="labal1" for="meal5">Recipe</label><br>
-    <input type="checkbox" name="meals" id="meal12" value="recipe">
-    <label class="labal1" for="meal5">Recipe</label>
+    <input type="checkbox" name="meals" id="meal10" value="Cooking oil ">
+    <label class="labal1" for="meal10">Cooking oil </label>
+    <input type="checkbox" name="meals" id="meal11" value="Salt">
+    <label class="labal1" for="meal11">Salt</label>
+    <input type="checkbox" name="meals" id="meal12" value="Sugar">
+    <label class="labal1" for="meal12">Sugar</label>
+    <input type="checkbox" name="meals" id="meal13" value="Tea leaves">
+    <label class="labal1" for="meal13">Tea leaves</label>
+    <input type="checkbox" name="meals" id="meal14" value="Coffee powder">
+    <label class="labal1" for="meal4">Coffee powder</label><br>
+    <input type="checkbox" name="meals" id="meal15" value="Milk">
+    <label class="labal1" for="meal5">Milk</label>
+    <input type="checkbox" name="meals" id="meal16" value="Yogurt">
+    <label class="labal1" for="meal6">Yogurt</label>
+    <input type="checkbox" name="meals" id="meal17" value="Ghee">
+    <label class="labal1" for="meal7">Ghee</label>
+    
+</div>
+<br>
+<h3 style="margin-left: 20px;">Fresh Produce:</h3>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal18" value="Potatoes">
+    <label class="labal1" for="meal8">Potatoes</label>
+    <input type="checkbox" name="meals" id="meal19" value="Onions">
+    <label class="labal1" for="meal9">Onions</label>
+    <input type="checkbox" name="meals" id="meal20" value="Tomatoes">
+    <label class="labal1" for="meal20">Tomatoes</label>
+    <input type="checkbox" name="meals" id="meal21" value="Garlic">
+    <label class="labal1" for="meal21">Garlic</label>
+    <input type="checkbox" name="meals" id="meal22" value="Ginger">
+    <label class="labal1" for="meal22">Ginger</label>
+    <input type="checkbox" name="meals" id="meal23" value="Green chilies">
+    <label class="labal1" for="meal23">Green chilies</label>
+    <input type="checkbox" name="meals" id="meal24" value="Coriander leaves">
+    <label class="labal1" for="meal24">Coriander leaves</label><br>
+    <input type="checkbox" name="meals" id="meal25" value="Curry leaves">
+    <label class="labal1" for="meal25">Curry leaves</label>
+    <input type="checkbox" name="meals" id="meal26" value="Coconut (fresh or desiccated)">
+    <label class="labal1" for="meal26">Coconut (fresh or desiccated)</label>
+    <input type="checkbox" name="meals" id="meal27" value="Tamarind">
+    <label class="labal1" for="meal27">Tamarind</label>  
 </div>
 
-<h1 style="margin-left: 20px;">checkbox3</h1>
+<br>
+<h3 style="margin-left: 20px;">Baking Essentials:</h3>
 <div class="lt1">
-    <input class="deep" type="checkbox" name="meals" id="meal13" value="recipe">
-    <label class="labal1" for="meal13">Recipe</label>
-    <input type="checkbox" name="meals" id="meal14" value="recipe">
-    <label class="labal1" for="meal14">Recipe</label>
-    <input type="checkbox" name="meals" id="meal15" value="recipe">
-    <label class="labal1" for="meal15">Recipe</label>
-    <input type="checkbox" name="meals" id="meal16" value="recipe">
-    <label class="labal1" for="meal16">Recipe</label>
-    <input type="checkbox" name="meals" id="meal17" value="recipe">
-    <label class="labal1" for="meal17">Recipe</label><br>
-    <input type="checkbox" name="meals" id="meal18" value="recipe">
-    <label class="labal1" for="meal18">Recipe</label>
+    <input type="checkbox" name="meals" id="meal28" value="Flour (for making chapatis, parathas, and puris)">
+    <label class="labal1" for="mea28">Flour (for making chapatis, parathas, and puris)</label>
+    <input type="checkbox" name="meals" id="meal29" value="Baking powder">
+    <label class="labal1" for="mea29">Baking powder</label>
+    <input type="checkbox" name="meals" id="meal30" value="Baking soda">
+    <label class="labal1" for="meal30">Baking soda</label>
+    <br><input type="checkbox" name="meals" id="meal31" value="Vinegar">
+    <label class="labal1" for="meal31">Vinegar</label>
+    <input type="checkbox" name="meals" id="meal32" value="Ginger">
+    <label class="labal1" for="meal32">Ginger</label>
+    <input type="checkbox" name="meals" id="meal33" value="Yeast">
+    <label class="labal1" for="meal33">Yeast</label>
+    
 </div>
-<button type="submit" class="w-100 pt-1 pb-1">search</button>
+
+<br>
+<h3 style="margin-left: 20px;">Condiments and Sauces:</h3>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal34" value="Soy sauce">
+    <label class="labal1" for="mea34">Soy sauce</label>
+    <input type="checkbox" name="meals" id="meal35" value="Tomato ketchup">
+    <label class="labal1" for="mea35">Tomato ketchup</label>
+    <input type="checkbox" name="meals" id="meal36" value="Mustard paste">
+    <label class="labal1" for="meal36">Mustard paste</label>
+    <input type="checkbox" name="meals" id="meal37" value="Pickles">
+    <label class="labal1" for="meal37">Pickles</label>
+    <input type="checkbox" name="meals" id="meal38" value="Jam">
+    <label class="labal1" for="meal38">Jam</label>
+    <input type="checkbox" name="meals" id="meal39" value="Mayonnaise">
+    <label class="labal1" for="meal39">Mayonnaise</label>
+        <input type="checkbox" name="meals" id="meal40" value="Hot sauce">
+    <label class="labal1" for="meal40">Hot sauce</label>
+    
+</div>
+<br>
+<button type="submit" class="w-100 pt-1 pb-1 bg-warning">search</button>
 </form>
 
 
