@@ -7,7 +7,7 @@
 <form class="form1" action="{% url 'formSearch' %}" method="POST">
     {% csrf_token %}
     
-    <h3 style="margin-left: 20px; margin-top: 20px;">Grains and Pulses:</h3>
+    <h4 style="margin-left: 20px; margin-top: 20px;">Grains and Pulses:</h4>
     <div class="lt1">
     <input class="deep" type="checkbox" name="meals" id="meal1" value="Rice">
     <label class="labal1" for="meal1">Rice</label>
@@ -29,7 +29,7 @@
     <label class="labal1" for="meal9">Barley</label>
 </div>
 <br>
-<h3 style="margin-left: 20px;">Cooking Essentials:</h3>
+<h4 style="margin-left: 20px;">Cooking Essentials:</h4>
 <div class="lt1">
     
     <input type="checkbox" name="meals" id="meal10" value="Cooking oil ">
@@ -51,7 +51,7 @@
     
 </div>
 <br>
-<h3 style="margin-left: 20px;">Fresh Produce:</h3>
+<h4 style="margin-left: 20px;">Fresh Produce:</h4>
 <div class="lt1">
     <input type="checkbox" name="meals" id="meal18" value="Potatoes">
     <label class="labal1" for="meal8">Potatoes</label>
@@ -76,7 +76,7 @@
 </div>
 
 <br>
-<h3 style="margin-left: 20px;">Baking Essentials:</h3>
+<h4 style="margin-left: 20px;">Baking Essentials:</h4>
 <div class="lt1">
     <input type="checkbox" name="meals" id="meal28" value="Flour (for making chapatis, parathas, and puris)">
     <label class="labal1" for="mea28">Flour (for making chapatis, parathas, and puris)</label>
@@ -94,7 +94,7 @@
 </div>
 
 <br>
-<h3 style="margin-left: 20px;">Condiments and Sauces:</h3>
+<h4 style="margin-left: 20px;">Condiments and Sauces:</h4>
 <div class="lt1">
     <input type="checkbox" name="meals" id="meal34" value="Soy sauce">
     <label class="labal1" for="mea34">Soy sauce</label>
@@ -112,8 +112,102 @@
     <label class="labal1" for="meal40">Hot sauce</label>
     
 </div>
+
+
 <br>
-<button type="submit" class="w-100 pt-1 pb-1 bg-warning">search</button>
+<h4 style="margin-left: 20px;">Canned and Packaged Foods:</h4>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal41" value="Canned beans (such as kidney beans, chickpeas, and sweet corn)">
+    <label class="labal1" for="mea41">Canned beans (such as kidney beans, chickpeas, and sweet corn)</label>
+    <input type="checkbox" name="meals" id="meal42" value="Canned tomatoes">
+    <label class="labal1" for="mea42">Canned tomatoes</label>
+    <input type="checkbox" name="meals" id="meal43" value="Pasta">
+    <label class="labal1" for="meal43">Pasta</label>
+    <input type="checkbox" name="meals" id="meal44" value="Noodles">
+    <label class="labal1" for="meal44">Noodles</label>
+    <input type="checkbox" name="meals" id="meal45" value="Ready-to-eat soups">
+    <label class="labal1" for="meal45">Ready-to-eat soups</label>
+    <input type="checkbox" name="meals" id="meal46" value="Instant noodles">
+    <label class="labal1" for="meal46">Instant noodles</label>
+    
+    
+</div>
+
+
+<br>
+<h4 style="margin-left: 20px;">Dairy and Eggs:</h4>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal47" value="Eggs">
+    <label class="labal1" for="meal47">Eggs</label>
+    <input type="checkbox" name="meals" id="meal48" value="Cheese">
+    <label class="labal1" for="mea48">Cheese</label>
+    <input type="checkbox" name="meals" id="meal49" value="Butter">
+    <label class="labal1" for="mea49">Butter</label>
+    <input type="checkbox" name="meals" id="meal50" value="Paneer (cottage cheese)">
+    <label class="labal1" for="meal50">Paneer (cottage cheese)</label>
+    <input type="checkbox" name="meals" id="meal51" value="Cream">
+    <label class="labal1" for="meal51">Cream</label>
+   
+    
+</div>
+
+
+<br>
+<h4 style="margin-left: 20px;">Sweeteners and Dessert Ingredients:</h4>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal52" value="Honey">
+    <label class="labal1" for="meal52">Honey</label>
+    <input type="checkbox" name="meals" id="meal53" value="Jaggery (gur)">
+    <label class="labal1" for="mea53">Jaggery (gur)</label>
+    <input type="checkbox" name="meals" id="meal54" value="Cocoa powder">
+    <label class="labal1" for="mea54">Cocoa powder</label>
+    <input type="checkbox" name="meals" id="meal55" value="Condensed milk">
+    <label class="labal1" for="meal55">Condensed milk</label>
+    <input type="checkbox" name="meals" id="meal56" value="Dessert mixes (such as cake mix, brownie mix, and pancake mix)">
+    <label class="labal1" for="meal56">Dessert mixes (such as cake mix, brownie mix, and pancake mix)</label>
+   
+    
+</div>
+
+
+<br>
+<h4 style="margin-left: 20px;">Dry Fruits and Nuts:</h4>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal57" value="Almonds">
+    <label class="labal1" for="meal57">Almonds</label>
+    <input type="checkbox" name="meals" id="meal58" value="Cashews">
+    <label class="labal1" for="mea58">Cashews</label>
+    <input type="checkbox" name="meals" id="meal59" value="Raisins">
+    <label class="labal1" for="mea59">Raisins</label>
+    <input type="checkbox" name="meals" id="meal60" value="Pistachios">
+    <label class="labal1" for="mea60">Pistachios</label>
+    <input type="checkbox" name="meals" id="meal61" value="Walnuts">
+    <label class="labal1" for="meal61">Walnuts</label>
+   
+    
+</div>
+
+
+<br>
+<h4 style="margin-left: 20px;">Miscellaneous:</h4>
+<div class="lt1">
+    <input type="checkbox" name="meals" id="meal62" value="Flour tortillas">
+    <label class="labal1" for="meal62">Flour tortillas</label>
+    <input type="checkbox" name="meals" id="meal63" value="Tortilla chips">
+    <label class="labal1" for="mea63">Tortilla chips</label>
+    <input type="checkbox" name="meals" id="meal64" value="Bread">
+    <label class="labal1" for="mea64">Bread</label>
+    <input type="checkbox" name="meals" id="meal65" value="Cereal">
+    <label class="labal1" for="meal65">Cereal</label>
+    <input type="checkbox" name="meals" id="meal66" value="Instant coffee">
+    <label class="labal1" for="meal66">Instant coffee</label>
+    <input type="checkbox" name="meals" id="meal66" value="Instant tea">
+    <label class="labal1" for="meal66">Instant tea</label>
+   
+    
+</div>
+<br>
+<button type="submit" class="w-100 pt-1 pb-1" style="background-color: #febf57; border: none; font-size: 15px;">search</button>
 </form>
 
 

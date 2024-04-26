@@ -204,7 +204,8 @@ def srcRecipePage(request , pk):
 
         step_with_quotes = [i.strip() for i in data.steps.split(':::') if i.strip()]
         step_data = [steps.replace('"', '') for steps in step_with_quotes]
-    
+        check = Save.objects.filter(recipe=pk)
+        
         context = {
             'check' : check,
             'data':data,
