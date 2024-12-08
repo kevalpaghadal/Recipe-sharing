@@ -1,1 +1,1 @@
-The Recipe Sharing System is a dynamic web application enabling users to explore, manage, and share recipes effortlessly. With features like secure authentication, recipe management, advanced search, and PDF generation, it delivers a seamless culinary experience.
+Recent BCA graduate passionate about crafting dynamic web applications with expertise in Python, Django, and modern web technologies. Skilled in creating seamless user experiences through innovative features like multilingual support, PDF generation, and advanced search functionalities.
